@@ -1,0 +1,56 @@
+/* Global Styles */
+$dark-blue: #003366;
+$orange: #ff8c00;
+$light-grey: #f4f4f4;
+$white: #fff;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+  background-color: $light-grey;
+  color: $dark-blue;
+
+  //   &__logo {
+  //     cursor: pointer;
+  //     .logo {
+  //       height: 40px;
+  //       border-radius: 36px;
+  //     }
+  //   }
+
+  &__nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $dark-blue;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      color: $orange;
+      //background-color: $white;
+      transform: translateY(-4px); /* Subtle hover effect */
+    }
+
+    &--primary {
+      color: $orange; /* Highlight Start Workout */
+      &:hover {
+        color: $white;
+        background-color: $orange;
+      }
+    }
+  }
+
+  /* Active Link Highlight */
+  .header__link.active {
+    border-bottom: 2px solid $orange;
+    color: $orange;
+  }
+}
