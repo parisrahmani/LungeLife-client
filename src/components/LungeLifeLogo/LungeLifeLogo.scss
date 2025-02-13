@@ -1,0 +1,16 @@
+.logo {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  &__icon {
+    height: 40px;
+    border-radius: 36px;
+  }
+}
+
+h4 {
+  color: #030b3e;
+  font-size: 12px;
+  margin: 0;
+}
