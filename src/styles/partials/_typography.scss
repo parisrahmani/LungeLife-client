@@ -1,0 +1,57 @@
+@use "./variables" as *;
+//@use "./mixins" as *;
+
+//Newsreader font family
+//Regular font
+@font-face {
+  font-family: "Newsreader";
+  src: url("src/assets/Font/Newsreader-Regular.woff2 ") format("woff2"),
+    url("src/assets/Font/Newsreader-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+// Light font
+@font-face {
+  font-family: "Newsreader";
+  src: url("src/assets/Font/Newsreader-Light.woff") format("woff"),
+    url("src/assets/Font/Newsreader-Light.woff2") format("woff2");
+  font-weight: 300;
+}
+
+// Light Italic font
+@font-face {
+  font-family: "Newsreader";
+  src: url("src/assets/Font/Newsreader-LightItalic.woff2") format("woff2"),
+    url("src/assets/Font/Newsreader-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+// Outfit font family
+// Medium font
+@font-face {
+  font-family: "Outfit";
+  src: url("src/assets/Font/Outfit-Medium.woff2 ") format("woff2"),
+    url("src/assets/Font/Outfit-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+// Light font
+@font-face {
+  font-family: "Outfit";
+  src: url("src/assets/Font/Outfit-Light.woff2") format("woff2"),
+    url("src/assets/Font/Outfit-Light.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-weight: 400;
+  src: url(/src/assets/Fonts/TitilliumWeb-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  font-weight: 600;
+  src: url(/src/assets/Fonts/TitilliumWeb-SemiBold.ttf) format("truetype");
+}
