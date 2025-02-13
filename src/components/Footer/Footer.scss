@@ -1,0 +1,129 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/extends" as *;
+
+.footer {
+  text-align: left;
+  padding: 1.5rem 1rem;
+  background-color: #f4f4f4;
+
+  @include tablet {
+    padding: 4.5rem 1.5rem;
+  }
+
+  &__main {
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 5rem;
+    }
+  }
+
+  &__text {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 15.25rem;
+
+      @include desktop {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+  }
+  &__cards {
+    padding: 1rem 0;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 4.5rem;
+      padding: 0;
+    }
+    @include desktop {
+      gap: 6rem;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    display: flex;
+    gap: 0.25rem;
+
+    @include tablet {
+      margin: 0;
+      padding: 0;
+      gap: 0.5rem;
+    }
+  }
+
+  //   &__item {
+  //     @extend %body_medium;
+  //   }
+
+  &__logo {
+    &--desktop {
+      display: none;
+    }
+  }
+  &__logo-link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+
+  @include tablet {
+    gap: 1.5rem;
+  }
+
+  &__icon {
+    min-width: 1rem;
+    min-height: 1rem;
+    color: navy;
+  }
+}
+
+.copyright {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: navy;
+
+  &__text {
+    @include text-style($Outfit, 0.875rem, 0.9375rem, 500, normal);
+    padding-right: 16px;
+  }
+
+  &__list {
+    // @extend %body_medium;
+    list-style: none;
+    display: flex;
+    gap: 0.625rem;
+    margin: 0;
+    padding: 0;
+
+    @include tablet {
+      @include text-style($Outfit, 0.875rem, 0.9375rem, 500, normal);
+    }
+  }
+}
+
+.logo {
+  height: 40px;
+}
