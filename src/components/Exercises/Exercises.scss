@@ -1,0 +1,60 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.exercise {
+  display: flex;
+  flex-direction: column;
+
+  &__search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  &__seatch-input {
+    @include form-field;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    //flex-wrap: wrap;
+    //gap: 1rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem 1rem;
+    padding: 0;
+    // border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    align-items: center;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+  &__name {
+    display: flex;
+    margin-left: 1rem;
+  }
+
+  &__image {
+    display: flex;
+    max-width: 90px;
+    height: auto;
+    max-height: 60px;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // margin-bottom: 1rem;
+  }
+}
