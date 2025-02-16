@@ -8,7 +8,8 @@ $white: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 2rem;
+  padding: 1rem 1rem;
+  background-size: 100%;
   background-color: $light-grey;
   color: $dark-blue;
 
@@ -29,7 +30,7 @@ $white: #fff;
   &__link {
     text-decoration: none;
     color: $dark-blue;
-    font-size: 1rem;
+    font-size: 12px;
     font-weight: bold;
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 
