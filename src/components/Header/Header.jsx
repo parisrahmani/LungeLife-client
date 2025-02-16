@@ -15,13 +15,13 @@ const Header = () => {
         <a href="/exercises" className="header__link">
           Exercises
         </a>
-        <a href="/progress" className="header__link">
-          {/* 📊  */}
+        {/* <a href="/progress" className="header__link">
+          📊 
           Progress
         </a>
         <a href="/history" className="header__link">
           History
-        </a>
+        </a> */}
 
         <a href="/ai-chat" className="header__link">
           💬
