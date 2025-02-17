@@ -1,0 +1,39 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.exercise-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  //margin: 2rem auto;
+
+  &__title {
+    // font-size: 2rem;
+    // font-weight: bold;
+    margin-bottom: 1rem;
+    color: $dark-blue;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  &__info {
+    width: 100%;
+    text-align: left;
+
+    p {
+      margin: 1rem 0;
+    }
+  }
+}
