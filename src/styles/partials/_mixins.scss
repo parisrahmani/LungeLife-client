@@ -67,15 +67,11 @@
   overflow: auto;
   resize: none;
   padding: 0 1rem;
-  border-radius: 20px;
+  border-radius: 10px;
   height: 2.375rem;
   border: 1px solid $cloud;
-  font-family: $body-font-stack;
-  color: $instock-black;
-  transition: border-color 0.3s ease;
-  &:focus {
-    border-color: $instock-indigo;
-  }
+  //font-family: $body-font-stack;
+  color: $black;
 }
 
 @mixin select-field {
@@ -90,24 +86,18 @@
   border-radius: 20px;
   height: 2.25rem;
   border: 1px solid $cloud;
-  font-family: $body-font-stack;
-  color: $slate;
+  //font-family: $body-font-stack;
+  //color: $slate;
 }
 
 @mixin btn-style {
   font-size: 0.75rem;
   font-weight: 400;
-  font-family: $body-font-stack;
   border-radius: 20px;
-  border: 1px solid $cloud;
-  padding: 0.3125rem 1rem;
+  border: none;
+  padding: 0.5rem 1rem;
   width: 46%;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  &:hover {
-    background-color: $cloud;
-    color: $instock-black;
-  }
 }
 
 @mixin btn-style-tablet {
@@ -119,24 +109,21 @@
 }
 
 @mixin primary-btn {
-  background-color: $instock-indigo;
+  background-color: $dark-blue;
   color: $white;
-  &:hover {
-    background-color: darken($instock-indigo, 10%);
-  }
 }
 
 @mixin primary-hover {
-  background-color: $graphite;
-  color: $white;
+  //background-color: $orange;
+  color: $cloud;
+  border-color: $orange;
+  font-style: bold;
+  border: none;
 }
 
 @mixin secondary-btn {
   background-color: $white;
   color: $slate;
-  &:hover {
-    background-color: lighten($slate, 40%);
-  }
 }
 
 @mixin secondary-hover {
@@ -147,9 +134,6 @@
 @mixin delete-btn {
   background-color: $red;
   color: $white;
-  &:hover {
-    background-color: darken($red, 10%);
-  }
 }
 
 @mixin form-focus {

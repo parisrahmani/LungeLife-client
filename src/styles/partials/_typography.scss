@@ -1,32 +1,20 @@
 @use "./variables" as *;
-//@use "./mixins" as *;
-
-//Newsreader font family
-//Regular font
 @font-face {
-  font-family: "Newsreader";
-  src: url("src/assets/Font/Newsreader-Regular.woff2 ") format("woff2"),
-    url("src/assets/Font/Newsreader-Regular.woff") format("woff");
+  font-family: "Great Vibes";
+  src: url("https://fonts.gstatic.com/s/greatvibes/v9/RWmMoKWR9v4ksMfaWd_JN9XFiaQ4.woff2")
+      format("woff2"),
+    url("https://fonts.gstatic.com/s/greatvibes/v9/RWmMoKWR9v4ksMfaWd_JN9XFiaQ4.woff")
+      format("woff");
   font-weight: 400;
 }
-
-// Light font
 @font-face {
-  font-family: "Newsreader";
-  src: url("src/assets/Font/Newsreader-Light.woff") format("woff"),
-    url("src/assets/Font/Newsreader-Light.woff2") format("woff2");
+  font-family: "Pacifico";
+  src: url("https://fonts.gstatic.com/s/pacifico/v17/FwZY7-Qmy14u9lezJ-6H6Mk.woff2")
+      format("woff2"),
+    url("https://fonts.gstatic.com/s/pacifico/v17/FwZY7-Qmy14u9lezJ-6H6M.woff")
+      format("woff");
   font-weight: 300;
 }
-
-// Light Italic font
-@font-face {
-  font-family: "Newsreader";
-  src: url("src/assets/Font/Newsreader-LightItalic.woff2") format("woff2"),
-    url("src/assets/Font/Newsreader-LightItalic.woff") format("woff");
-  font-weight: 300;
-  font-style: italic;
-}
-
 // Outfit font family
 // Medium font
 @font-face {
@@ -42,16 +30,4 @@
   src: url("src/assets/Font/Outfit-Light.woff2") format("woff2"),
     url("src/assets/Font/Outfit-Light.woff") format("woff");
   font-weight: 300;
-}
-
-@font-face {
-  font-family: "Titillium Web";
-  font-weight: 400;
-  src: url(/src/assets/Fonts/TitilliumWeb-Regular.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Titillium Web";
-  font-weight: 600;
-  src: url(/src/assets/Fonts/TitilliumWeb-SemiBold.ttf) format("truetype");
 }
