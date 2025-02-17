@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
+
 import "./Exercises.scss";
 
 import searchIcon from "../../assets/Icons/search-24px.svg";
@@ -10,8 +12,6 @@ const Exercises = () => {
   const [level, setLevel] = useState("");
   const [category, setCategory] = useState("");
   const [exercises, setExercises] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 50;
 
   const leg = ["quadriceps", "hamstrings", "calves", "adductors"];
   const core = ["abdominals", "obliques", "lower back"];
@@ -55,6 +55,32 @@ const Exercises = () => {
     fetchExercises();
   }, []);
 
+  const bodyPartOptions = [
+    { value: "", label: "Body Part" },
+    { value: "Legs", label: "Legs" },
+    { value: "Core", label: "Core" },
+    { value: "Arms", label: "Arms" },
+    { value: "Back", label: "Back" },
+    { value: "Chest", label: "Chest" },
+    { value: "Neck", label: "Neck" },
+    { value: "Shoulders", label: "Shoulders" },
+    { value: "Glutes", label: "Glutes" },
+  ];
+
+  const levelOptions = [
+    { value: "", label: "Select Level" },
+    { value: "beginner", label: "Beginner" },
+    { value: "intermediate", label: "Intermediate" },
+    { value: "advance", label: "Advanced" },
+  ];
+
+  const categoryOptions = [
+    { value: "", label: "Category" },
+    { value: "strength", label: "Strength" },
+    { value: "cardio", label: "Cardio" },
+    { value: "stretching", label: "Stretching" },
+  ];
+
   const filteredExercises = exercises
     .filter((exercise) => {
       return (
@@ -70,13 +96,6 @@ const Exercises = () => {
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  const totalPages = Math.ceil(filteredExercises.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  // const paginatedExercises = filteredExercises.slice(
-  //   startIndex,
-  //   startIndex + itemsPerPage
-  // );
-
   return (
     <div className="exercise">
       <div className="exercise__search">
@@ -88,7 +107,7 @@ const Exercises = () => {
           className="exercise__search-input"
         />
         <img
-          className="searchForm__search-icon"
+          className="exercise__search-icon"
           src={searchIcon}
           alt="Search Icon"
         />
@@ -105,67 +124,59 @@ const Exercises = () => {
         {/* </Link> */}
       </div>
 
-      <div>
-        <select
-          value={primary_muscles}
-          onChange={(e) => setBodyPart(e.target.value)}
-        >
-          <option value="">Select Body Part</option>
-          <option value="Legs">Legs</option>
-          <option value="Core">Core</option>
-          <option value="Arms">Arms</option>
-          <option value="Back">Back</option>
-          <option value="Chest">Chest</option>
-          <option value="Neck">Neck</option>
-          <option value="Shoulders">Shoulders</option>
-          <option value="Glutes">Glutes</option>
-        </select>
-        <select value={level} onChange={(e) => setLevel(e.target.value)}>
-          <option value="">Select Level</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advance">Advance</option>
-        </select>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="">Select Category</option>
-          <option value="strength">Strength</option>
-          <option value="cardio">Cardio</option>
-          <option value="stretching">Stretch</option>
-        </select>
+      <div className="exercise__filter">
+        <Select
+          options={bodyPartOptions}
+          value={bodyPartOptions.find(
+            (option) => option.value === primary_muscles
+          )}
+          onChange={(selectedOption) => setBodyPart(selectedOption.value)}
+          placeholder="Body Part"
+          classNames={{
+            control: () => "exercise__filter-item",
+            menu: () => "exercise__filter-menu",
+            option: () => "exercise__filter-option",
+          }}
+        />
+        {/* <Select
+          options={levelOptions}
+          value={levelOptions.find((option) => option.value === level)}
+          onChange={(selectedOption) => setLevel(selectedOption.value)}
+          className="exercise__filter-item"
+          placeholder="Select Level"
+        /> */}
+        <Select
+          options={categoryOptions}
+          value={categoryOptions.find((option) => option.value === category)}
+          onChange={(selectedOption) => setCategory(selectedOption.value)}
+          placeholder="Category"
+          classNames={{
+            control: () => "exercise__filter-item",
+            menu: () => "exercise__filter-menu",
+            option: () => "exercise__filter-option",
+          }}
+        />
       </div>
       <ul className="exercise__list">
         {filteredExercises.map((exercise) => (
-          <li key={exercise.id} className="exercise__item">
-            <img
-              src={`http://localhost:8080${exercise.images[0]}`}
-              alt={exercise.name}
-              className="exercise__image"
-            />
-            <div>
-              <h3 className="exercise__name">{exercise.name}</h3>
-            </div>
-          </li>
+          <Link
+            to={`/exercises/${exercise.id}`}
+            key={exercise.id}
+            className="image-grid__link"
+          >
+            <li key={exercise.id} className="exercise__item">
+              <img
+                src={`http://localhost:8080${exercise.images[0]}`}
+                alt={exercise.name}
+                className="exercise__image"
+              />
+              <div>
+                <h3 className="exercise__name">{exercise.name}</h3>
+              </div>
+            </li>
+          </Link>
         ))}
       </ul>
-      {/* <div className="pagination">
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div> */}
     </div>
   );
 };
