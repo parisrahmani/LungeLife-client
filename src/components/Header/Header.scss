@@ -1,8 +1,7 @@
 /* Global Styles */
-$dark-blue: #003366;
-$orange: #ff8c00;
-$light-grey: #f4f4f4;
-$white: #fff;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
 
 .header {
   display: flex;
@@ -10,16 +9,10 @@ $white: #fff;
   align-items: center;
   padding: 1rem 1rem;
   background-size: 100%;
-  background-color: $light-grey;
-  color: $dark-blue;
-
-  //   &__logo {
-  //     cursor: pointer;
-  //     .logo {
-  //       height: 40px;
-  //       border-radius: 36px;
-  //     }
-  //   }
+  // background-color: $light-grey;
+  // color: $dark-blue;
+  background-color: $dark-blue;
+  color: $light-grey;
 
   &__nav {
     display: flex;
@@ -29,7 +22,7 @@ $white: #fff;
 
   &__link {
     text-decoration: none;
-    color: $dark-blue;
+    color: $white;
     font-size: 12px;
     font-weight: bold;
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
