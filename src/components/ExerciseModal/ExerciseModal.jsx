@@ -36,19 +36,21 @@
 // };
 
 // export default ExerciseModal;
-
+//import ReactModal from "react-modal";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 import "./ExerciseModal.scss";
 import searchIcon from "../../assets/Icons/search-24px.svg";
 
-const ExerciseModal = ({
+//ReactModal.setAppElement("#root");
+
+function ExerciseModal({
   selectedExercises,
   setSelectedExercises,
   onAdd,
   onClose,
-}) => {
+}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [primary_muscles, setBodyPart] = useState("");
   const [level, setLevel] = useState("");
@@ -145,6 +147,14 @@ const ExerciseModal = ({
   };
 
   return (
+    // <ReactModal
+    //   onAdd={onAdd}
+    //   onClose={onClose}
+    //   contentLabel="Custom Popup"
+    //   className="modal"
+    //   shouldCloseOnOverlayClick={false}
+    //   overlayClassName="Overlay"
+    // >
     <div className="modal">
       <div className="modal__content">
         <h2>Select Exercises</h2>
@@ -199,32 +209,30 @@ const ExerciseModal = ({
         {/* Exercise List */}
         <ul className="exercise__list">
           {filteredExercises.map((exercise) => (
-            <li key={exercise.id} className="exercise__item">
-              <input
-                type="checkbox"
-                className="exercise__checkbox"
-                checked={selectedExercises.some((e) => e.id === exercise.id)}
-                onChange={() => handleSelectExercise(exercise)}
+            <li
+              key={exercise.id}
+              className={`exercise__item ${
+                selectedExercises.some((e) => e.id === exercise.id)
+                  ? "selected"
+                  : ""
+              }`}
+              onClick={() => handleSelectExercise(exercise)}
+            >
+              <img
+                src={`http://localhost:8080${exercise.images[0]}`}
+                alt={exercise.name}
+                className="exercise__image"
               />
-              <Link
-                to={`/exercises/${exercise.id}`}
-                className="image-grid__link"
-              >
-                <img
-                  src={`http://localhost:8080${exercise.images[0]}`}
-                  alt={exercise.name}
-                  className="exercise__image"
-                />
-                <div>
-                  <h3 className="exercise__name">{exercise.name}</h3>
-                </div>
-              </Link>
+              <div>
+                <h3 className="exercise__name">{exercise.name}</h3>
+              </div>
             </li>
           ))}
         </ul>
       </div>
     </div>
+    //</ReactModal>
   );
-};
+}
 
 export default ExerciseModal;
