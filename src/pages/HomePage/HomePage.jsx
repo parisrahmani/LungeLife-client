@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import ExerciseModal from "../../components/ExerciseModal/ExerciseModal";
 import WorkoutTemplate from "../../components/WorkoutTemplate/WorkoutTemplate";
@@ -7,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import "./HomePage.scss";
 
 function Homepage() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   //const [templates, setTemplates] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,7 +17,7 @@ function Homepage() {
     user_id: "user-01", // Replace with actual user ID
     template_name: "",
     date: "",
-    exercises: "",
+    exercises: [],
     notes: "",
   });
 
@@ -46,7 +47,7 @@ function Homepage() {
     };
 
     try {
-      const res = await fetch("http://localhost:8080/api/sessions", {
+      const res = await fetch("http://localhost:8080/api/templates", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -65,6 +66,9 @@ function Homepage() {
 
   return (
     <div className="newSession">
+      <Link to="/start">
+        <button> Start a new workout</button>
+      </Link>
       {/* <h1>Add new session</h1> */}
       <form onSubmit={handleSubmit} className="newSession__form">
         <input
@@ -88,7 +92,7 @@ function Homepage() {
           type="text"
           name="exercises"
           placeholder="Exercise"
-          value={newTemplate.exercises}
+          value={newTemplate.exercises.join(", ")}
           onChange={handleChange}
           readOnly
           className="newSession__input newSession__input--exercises"
