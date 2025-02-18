@@ -70,7 +70,10 @@ function Homepage() {
   return (
     <div className="newSession">
       <Link to="/start">
-        <button> Start a new workout</button>
+        <button className="newSession__start-exercise-button">
+          {" "}
+          Start a new workout
+        </button>
       </Link>
       {/* <h1>Add new session</h1> */}
       <form onSubmit={handleSubmit} className="newSession__form">

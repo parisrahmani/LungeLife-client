@@ -15,7 +15,14 @@
   &__input {
     @include form-field;
   }
-
+  &__start-exercise-button {
+    @include btn-style;
+    @include primary-btn;
+    background-color: orangered;
+    width: 80%;
+    margin: 1rem auto;
+    display: block;
+  }
   &__button {
     @include btn-style;
     @include primary-btn;
