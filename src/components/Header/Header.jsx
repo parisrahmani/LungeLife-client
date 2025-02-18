@@ -1,20 +1,25 @@
 import React from "react";
-import "./Header.scss"; // Import SCSS for styling
-//import "../LungeLifeLogo/LungeLifeLogo";
+import "./Header.scss";
+import { Link } from "react-router-dom";
+
 import LungeLifeLogo from "../LungeLifeLogo/LungeLifeLogo";
-const Header = () => {
+function Header() {
   return (
     <header className="header">
       <div className="header__logo">
         <LungeLifeLogo />
       </div>
       <nav className="header__nav">
-        <a href="/start-workout" className="header__link">
-          Start Workout
-        </a>
-        <a href="/exercises" className="header__link">
-          Exercises
-        </a>
+        <Link to="/" className="header__link">
+          <a href="/start-workout" className="header__link">
+            Start Workout
+          </a>
+        </Link>
+        <Link to="/exercises" className="header__link">
+          <a href="/exercises" className="header__link">
+            Exercises
+          </a>
+        </Link>
         {/* <a href="/progress" className="header__link">
           📊 
           Progress
@@ -32,6 +37,6 @@ const Header = () => {
       </nav>
     </header>
   );
-};
+}
 
 export default Header;
