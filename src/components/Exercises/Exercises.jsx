@@ -159,22 +159,27 @@ const Exercises = () => {
       </div>
       <ul className="exercise__list">
         {filteredExercises.map((exercise) => (
-          <Link
-            to={`/exercises/${exercise.id}`}
-            key={exercise.id}
-            className="image-grid__link"
-          >
-            <li key={exercise.id} className="exercise__item">
-              <img
-                src={`http://localhost:8080${exercise.images[0]}`}
-                alt={exercise.name}
-                className="exercise__image"
-              />
-              <div>
-                <h3 className="exercise__name">{exercise.name}</h3>
-              </div>
-            </li>
-          </Link>
+          <li key={exercise.id} className="exercise__item">
+            {/* <input
+              type="checkbox"
+              className="exercise__checkbox"
+              checked={selectedExercises.some((e) => e.id === exercise.id)}
+              onChange={() => onSelect(exercise)}
+            /> */}
+            <Link
+              to={`/exercises/${exercise.id}`}
+              key={exercise.id}
+              className="image-grid__link"
+            ></Link>
+            <img
+              src={`http://localhost:8080${exercise.images[0]}`}
+              alt={exercise.name}
+              className="exercise__image"
+            />
+            <div>
+              <h3 className="exercise__name">{exercise.name}</h3>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
