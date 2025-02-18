@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import "./WorkoutTemplate.scss";
 
-function WorkoutTemplate() {
+function WorkoutTemplate({ reloadtempaltes }) {
   const [templates, setTemplates] = useState([]);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function WorkoutTemplate() {
         setTemplates(data);
       })
       .catch((err) => console.error("Error fetching templates:", err));
-  }, []);
+  }, [reloadtempaltes]);
 
   //setTemplates([...templates, data]); // Update state
 

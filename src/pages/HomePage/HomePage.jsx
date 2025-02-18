@@ -11,6 +11,7 @@ function Homepage() {
   //const navigate = useNavigate();
 
   //const [templates, setTemplates] = useState([]);
+  const [reloadTemplates, setReloadTemplates] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [newTemplate, setNewTemplate] = useState({
@@ -47,7 +48,7 @@ function Homepage() {
     };
 
     try {
-      const res = await fetch("http://localhost:8080/api/templates", {
+      const res = await fetch("http://localhost:8080/api/templates/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -59,6 +60,8 @@ function Homepage() {
 
       const data = await res.json();
       console.log("Server response:", data);
+
+      setReloadTemplates((prev) => !prev);
     } catch (error) {
       console.error("Error adding template:", error);
     }
@@ -118,7 +121,7 @@ function Homepage() {
           Add Session
         </button>
       </form>
-      <WorkoutTemplate />
+      <WorkoutTemplate reloadTemplates={{ reloadTemplates }} />
     </div>
   );
 }
