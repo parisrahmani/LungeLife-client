@@ -6,7 +6,7 @@ function WorkoutTemplate() {
   const [templates, setTemplates] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/sessions")
+    fetch("http://localhost:8080/api/templates")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched data:", data);
@@ -19,7 +19,7 @@ function WorkoutTemplate() {
 
   return (
     <section className="templateSection">
-      <h1 className="templateSection__title">Sample Sessions</h1>
+      <h1 className="templateSection__title">Sample Templates</h1>
       <div className="templateCard">
         <ul className="templateCard__list">
           {templates.map((template) => (
