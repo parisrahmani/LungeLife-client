@@ -157,10 +157,17 @@ function ExerciseModal({
     // >
     <div className="modal">
       <div className="modal__content">
-        <h2>Select Exercises</h2>
+        <h2 className="modal__title">Select Exercises</h2>
         <div className="modal__buttons">
-          <button onClick={onClose}>Close</button>
-          <button onClick={() => onAdd(selectedExercises)}>Add</button>
+          <button
+            onClick={() => onAdd(selectedExercises)}
+            className="modal__buttons--each"
+          >
+            Add
+          </button>
+          <button onClick={onClose} className="modal__buttons--each">
+            Close
+          </button>
         </div>
 
         {/* Search and Filter */}
