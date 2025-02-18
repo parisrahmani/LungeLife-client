@@ -11,14 +11,10 @@ function Header() {
       </div>
       <nav className="header__nav">
         <Link to="/" className="header__link">
-          <a href="/start-workout" className="header__link">
-            Start Workout
-          </a>
+          Start Workout
         </Link>
         <Link to="/exercises" className="header__link">
-          <a href="/exercises" className="header__link">
-            Exercises
-          </a>
+          Exercises
         </Link>
         {/* <a href="/progress" className="header__link">
           📊 
@@ -28,12 +24,12 @@ function Header() {
           History
         </a> */}
 
-        <a href="/ai-chat" className="header__link">
+        <Link to="/ai-chat" className="header__link">
           💬
-        </a>
-        <a href="/profile" className="header__link">
+        </Link>
+        <Link to="/profile" className="header__link">
           👤
-        </a>
+        </Link>
       </nav>
     </header>
   );
