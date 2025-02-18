@@ -1,0 +1,75 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.templateSection {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  //margin: 2rem auto;
+
+  &__title {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: start;
+  }
+}
+
+.templateCard {
+  &__section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    //border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  &__name {
+    color: #333;
+  }
+
+  &__date {
+    color: #888;
+  }
+
+  &__exerciseList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__exerciseItem {
+    font-size: 0.75rem;
+    line-height: 1.625rem;
+    color: #555;
+    padding: 0.5rem 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
