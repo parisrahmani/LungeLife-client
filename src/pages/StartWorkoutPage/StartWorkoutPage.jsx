@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 import ExerciseModal from "../../components/ExerciseModal/ExerciseModal";
 import ExerciseForm from "../../components/ExericeForm/ExericeForm";
 
 import "./StartWorkoutPage.scss";
 
 function StartWorkoutPage() {
+  const location = useLocation();
+  const templateExercises = location.state?.exercises || [];
+
   const [showModal, setShowModal] = useState(false);
   const [selectedExercises, setSelectedExercises] = useState([]);
-  const [addedExercises, setAddedExercises] = useState([]);
+  const [addedExercises, setAddedExercises] = useState([templateExercises]);
 
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -33,7 +37,7 @@ function StartWorkoutPage() {
       )}
 
       {addedExercises.map((exercise, index) => (
-        <ExerciseForm key={index} exercise={exercise} />
+        <ExerciseForm key={index} exercise={{ name: exercise }} />
       ))}
 
       <button onClick={handleOpenModal} className="start-workout__button-add">
