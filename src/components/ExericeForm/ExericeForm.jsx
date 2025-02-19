@@ -1,92 +1,143 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function ExerciseForm() {
-  const [exercise, setExercise] = useState({
+function ExerciseForm({ exercise }) {
+  const [exerciseData, setExerciseData] = useState({
     name: "",
-    sets: 1,
-    reps: 1,
-    weight: 0,
-    rpe: "Easy",
-    duration: 0,
+    sets: [],
+    timeElapsed: 0,
+    running: false,
   });
+  //   { name: "",
+  //   sets: 1,
+  //   reps: 1,
+  //   weight: 0,
+  //   rpe: "Easy",
+  //   duration: 0,
+  // });
+
+  useEffect(() => {
+    if (exercise?.name) {
+      setExerciseData((prev) => ({
+        ...prev,
+        name: exercise.name,
+        sets: prev.sets.length
+          ? prev.sets
+          : [{ set: 1, reps: 1, weight: 0, rpe: "Easy", duration: 0 }],
+      }));
+    }
+  }, [exercise]);
 
   const rpeLevels = ["Easy", "Moderate", "Hard", "Max Effort"];
 
-  const handleChange = (e) => {
+  const handleChange = (index, e) => {
     const { name, value } = e.target;
-    setExercise((prev) => ({ ...prev, [name]: value }));
+    setExerciseData((prev) => ({
+      ...prev,
+      sets: prev.sets.map((set, i) =>
+        i === index ? { ...set, [name]: value } : set
+      ),
+    }));
+  };
+
+  const handleAddSet = () => {
+    setExerciseData((prev) => ({
+      ...prev,
+      sets: [
+        ...prev.sets,
+        {
+          set: prev.sets.length + 1,
+          reps: 1,
+          weight: 0,
+          rpe: "Easy",
+          duration: 0,
+        },
+      ],
+    }));
+  };
+
+  const handleToggleTimer = () => {
+    if (!exerciseData.running) {
+      // Start the timer
+      const intervalId = setInterval(() => {
+        setExerciseData((prev) => ({
+          ...prev,
+          timeElapsed: prev.timeElapsed + 1,
+        }));
+      }, 1000);
+      setExerciseData((prev) => ({ ...prev, running: true, intervalId }));
+    } else {
+      // Stop the timer
+      clearInterval(exerciseData.intervalId);
+      setExerciseData((prev) => ({ ...prev, running: false }));
+    }
   };
 
   return (
-    <div>
-      <h3>Add Exercise</h3>
-      <label>
-        Exercise Name:
-        <input
-          type="text"
-          name="name"
-          value={exercise.name}
-          onChange={handleChange}
-          placeholder="e.g., Squat"
-        />
-      </label>
+    <div className="exercise-form">
+      <div className="exercise-header">
+        <h3>{exerciseData.name || "Add Exercise"}</h3>
+        <button onClick={handleToggleTimer}>
+          {exerciseData.running
+            ? `⏸ ${exerciseData.timeElapsed}s`
+            : `▶️ ${exerciseData.timeElapsed}s`}
+        </button>
+      </div>
+      {/* <div>
+        <p>Sets</p>
+        <p>Reps</p>
+        <p>Kg</p>
+        <p>PRE</p>
+        <p>Time</p>
+      </div> */}
+      <div className="exercise-table">
+        <div className="table-header">
+          <span>Set</span>
+          <span>Reps</span>
+          <span>Weight (kg)</span>
+          <span>RPE</span>
+          <span>Duration (min)</span>
+        </div>
 
-      <label>
-        Sets:
-        <input
-          type="number"
-          name="sets"
-          value={exercise.sets}
-          onChange={handleChange}
-          min="1"
-        />
-      </label>
+        {exerciseData.sets.map((set, index) => (
+          <div key={index} className="table-row">
+            <span>{set.set}</span>
+            <input
+              type="number"
+              name="reps"
+              value={set.reps}
+              onChange={(e) => handleChange(index, e)}
+              min="1"
+            />
+            <input
+              type="number"
+              name="weight"
+              value={set.weight}
+              onChange={(e) => handleChange(index, e)}
+              min="0"
+            />
+            <select
+              name="rpe"
+              value={set.rpe}
+              onChange={(e) => handleChange(index, e)}
+            >
+              {rpeLevels.map((level) => (
+                <option key={level} value={level}>
+                  {level}
+                </option>
+              ))}
+            </select>
+            <input
+              type="number"
+              name="duration"
+              value={set.duration}
+              onChange={(e) => handleChange(index, e)}
+              min="0"
+            />
+          </div>
+        ))}
+      </div>
 
-      <label>
-        Reps:
-        <input
-          type="number"
-          name="reps"
-          value={exercise.reps}
-          onChange={handleChange}
-          min="1"
-        />
-      </label>
-
-      <label>
-        Weight (kg):
-        <input
-          type="number"
-          name="weight"
-          value={exercise.weight}
-          onChange={handleChange}
-          min="0"
-        />
-      </label>
-
-      <label>
-        RPE:
-        <select name="rpe" value={exercise.rpe} onChange={handleChange}>
-          {rpeLevels.map((level) => (
-            <option key={level} value={level}>
-              {level}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label>
-        Duration (min):
-        <input
-          type="number"
-          name="duration"
-          value={exercise.duration}
-          onChange={handleChange}
-          min="0"
-        />
-      </label>
-
-      <button onClick={() => console.log(exercise)}>Add Exercise</button>
+      <button onClick={handleAddSet}>Add Set</button>
     </div>
   );
 }
