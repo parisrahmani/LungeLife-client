@@ -89,12 +89,12 @@ function StartWorkoutPage() {
         </div>
       </div>
       <div className="start-workout__date">
-        <input
+        {/* <input
           type="date"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
           className="start-workout__date-input"
-        />
+        /> */}
       </div>
 
       {showModal && (
