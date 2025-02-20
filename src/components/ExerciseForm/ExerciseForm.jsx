@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+import axios from "axios";
+
 import "./ExerciseForm.scss";
 
 function ExerciseForm({ exercise }) {
+  const [selectedDate, setSelectedDate] = useState("");
   const [exerciseData, setExerciseData] = useState({
     user_id: "user-01",
     exercise_id: "",
     date: "",
-    eachExerciseRecords: [
-      { weight: "", reps: "", sets: 1, duration: "", prs: "" },
-    ],
+    exerciseRecords: [{ weight: "", reps: "", sets: 1, duration: "", prs: "" }],
   });
 
   useEffect(() => {
@@ -17,9 +18,8 @@ function ExerciseForm({ exercise }) {
       setExerciseData((prev) => ({
         ...prev,
         name: exercise.name,
-        exercise_id: exercise.name, // Update exercise_id when exercise is selected
-        eachExerciseRecords: prev.eachExerciseRecords.length
-          ? prev.eachExerciseRecords
+        exerciseRecords: prev.exerciseRecords.length
+          ? prev.exerciseRecords
           : [{ weight: "", reps: "", sets: 1, duration: "", prs: "" }],
       }));
     }
@@ -31,7 +31,7 @@ function ExerciseForm({ exercise }) {
     const { name, value } = e.target;
     setExerciseData((prev) => ({
       ...prev,
-      eachExerciseRecords: prev.eachExerciseRecords.map((record, i) =>
+      exerciseRecords: prev.exerciseRecords.map((record, i) =>
         i === index ? { ...record, [name]: value } : record
       ),
     }));
@@ -40,12 +40,12 @@ function ExerciseForm({ exercise }) {
   const handleAddSet = () => {
     setExerciseData((prev) => ({
       ...prev,
-      eachExerciseRecords: [
-        ...prev.eachExerciseRecords,
+      exerciseRecords: [
+        ...prev.exerciseRecords,
         {
           weight: "",
           reps: "",
-          sets: prev.eachExerciseRecords.length + 1,
+          sets: prev.exerciseRecords.length + 1,
           duration: "",
           prs: "",
         },
@@ -53,18 +53,59 @@ function ExerciseForm({ exercise }) {
     }));
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    console.log(exercise);
+    console.log(exerciseData.exerciseRecords);
+
+    const formData = {
+      user_id: "user-01",
+      exercise_id: exercise.id,
+      date: selectedDate,
+      exerciseRecords: exerciseData.exerciseRecords.map(
+        ({ weight, reps, duration, prs }) => ({
+          weight: weight,
+          reps: reps,
+          duration: duration,
+          prs: prs,
+        })
+      ),
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/api/progress", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit data");
+      }
+
+      const result = await response.json();
+      console.log("Success:", result);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
-    <div className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <div className="form__header">
         <h3>{exerciseData.name || "Add Exercise"}</h3>
       </div>
-      {/* <div>
-        <p>Sets</p>
-        <p>Reps</p>
-        <p>Kg</p>
-        <p>PRE</p>
-        <p>Time</p>
-      </div> */}
+
+      <input
+        type="date"
+        value={selectedDate}
+        onChange={(e) => setSelectedDate(e.target.value)}
+        className="start-workout__date-input"
+      />
+      <button type="submit">Submit</button>
+
       <div className="form-table">
         <div className="form-table__header">
           <span className="form-table__header-item">Set</span>
@@ -74,9 +115,9 @@ function ExerciseForm({ exercise }) {
           <span className="form-table__header-item">Duration (min)</span>
         </div>
 
-        {exerciseData.eachExerciseRecords.map((set, index) => (
+        {exerciseData.exerciseRecords.map((set, index) => (
           <div key={index} className="form-table__row">
-            <span>{set.set}</span>
+            <span>{set.sets}</span>
             <input
               type="number"
               name="reps"
@@ -113,11 +154,60 @@ function ExerciseForm({ exercise }) {
         ))}
       </div>
 
-      <button onClick={handleAddSet} className="form-table__button-set">
+      <button
+        type="button"
+        onClick={handleAddSet}
+        className="form-table__button-set"
+      >
         Add Set
       </button>
-    </div>
+    </form>
   );
 }
 
 export default ExerciseForm;
+
+// const [exercises, setExercises] = useState([
+//   {
+//     user_id: "user-01",
+//     exercise_id: "",
+//     date: "",
+//     exerciseRecords: [
+//       { weight: "", reps: "", sets: 1, duration: "", prs: "" },
+//     ],
+//   },
+// ]);
+
+// const [isSubmitting, setIsSubmitting] = useState(false);
+// const [submitSuccess, setSubmitSuccess] = useState(null);
+// const [error, setError] = useState(null);
+
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   console.log(exercises);
+//   setIsSubmitting(true);
+//   setSubmitSuccess(null);
+//   setError(null);
+
+//   try {
+//     const response = await fetch("http://localhost:8080/api/progress", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ exercises }),
+//     });
+
+//     if (!response.ok) throw new Error("Failed to submit exercise log");
+
+//     setSubmitSuccess("Exercise logs submitted successfully!");
+//     setExerciseData({
+//       user_id: "user-01",
+//       exercise_id: "",
+//       date: "",
+//       exerciseRecords: [{ weight: "", reps: "", duration: "", prs: "" }],
+//     });
+//   } catch (err) {
+//     setError(err.message);
+//   } finally {
+//     setIsSubmitting(false);
+//   }
+// };
