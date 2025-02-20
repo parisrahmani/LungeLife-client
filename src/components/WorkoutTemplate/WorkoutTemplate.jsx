@@ -7,14 +7,26 @@ function WorkoutTemplate({ reloadtempaltes }) {
   const [templates, setTemplates] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/templates")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Fetched data:", data);
+    async function getTemplate() {
+      try {
+        const response = await axios.get("http://localhost:8080/api/templates");
+
         setTemplates(data);
-      })
-      .catch((err) => console.error("Error fetching templates:", err));
-  }, [reloadtempaltes]);
+      } catch (err) {
+        console.error("Error fetching template:", err);
+      }
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:8080/api/templates")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("Fetched data:", data);
+  //       setTemplates(data);
+  //     })
+  //     .catch((err) => console.error("Error fetching templates:", err));
+  // }, [reloadtempaltes]);
 
   //setTemplates([...templates, data]); // Update state
 
@@ -25,13 +37,7 @@ function WorkoutTemplate({ reloadtempaltes }) {
         <ul className="templateCard__list">
           {templates.map((template) => (
             <li key={template.id} className="templateCard__item">
-              <Link
-                to={{
-                  pathname: "/start",
-                  state: { exercises: template.exercises },
-                }}
-                className="templateCard__link"
-              >
+              <Link to={`/start/${template.id}`} className="templateCard__link">
                 <div className="templateCard__section">
                   <div className="templateCard__title">
                     <h3 className="templateCard__name">
