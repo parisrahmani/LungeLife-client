@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import ExerciseModal from "../../components/ExerciseModal/ExerciseModal";
@@ -121,7 +121,7 @@ function Homepage() {
           className="newSession__input newSession__input--notes"
         />
         <button type="submit" className="newSession__button">
-          Add Session
+          Add Template
         </button>
       </form>
       <WorkoutTemplate reloadTemplates={{ reloadTemplates }} />

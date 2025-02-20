@@ -76,11 +76,11 @@ function ExerciseForm({ exercise }) {
     <div className="exercise-form">
       <div className="exercise-header">
         <h3>{exerciseData.name || "Add Exercise"}</h3>
-        <button onClick={handleToggleTimer}>
+        {/* <button onClick={handleToggleTimer}>
           {exerciseData.running
             ? `⏸ ${exerciseData.timeElapsed}s`
             : `▶️ ${exerciseData.timeElapsed}s`}
-        </button>
+        </button> */}
       </div>
       {/* <div>
         <p>Sets</p>
