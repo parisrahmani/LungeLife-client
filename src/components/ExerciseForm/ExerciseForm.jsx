@@ -4,10 +4,12 @@ import "./ExerciseForm.scss";
 
 function ExerciseForm({ exercise }) {
   const [exerciseData, setExerciseData] = useState({
-    name: "",
-    sets: [],
-    timeElapsed: 0,
-    running: false,
+    user_id: "user-01",
+    exercise_id: "",
+    date: "",
+    eachExerciseRecords: [
+      { weight: "", reps: "", sets: 1, duration: "", prs: "" },
+    ],
   });
 
   useEffect(() => {
@@ -15,9 +17,10 @@ function ExerciseForm({ exercise }) {
       setExerciseData((prev) => ({
         ...prev,
         name: exercise.name,
-        sets: prev.sets.length
-          ? prev.sets
-          : [{ set: 1, reps: 1, weight: 0, rpe: "Easy", duration: 0 }],
+        exercise_id: exercise.name, // Update exercise_id when exercise is selected
+        eachExerciseRecords: prev.eachExerciseRecords.length
+          ? prev.eachExerciseRecords
+          : [{ weight: "", reps: "", sets: 1, duration: "", prs: "" }],
       }));
     }
   }, [exercise]);
@@ -28,8 +31,8 @@ function ExerciseForm({ exercise }) {
     const { name, value } = e.target;
     setExerciseData((prev) => ({
       ...prev,
-      sets: prev.sets.map((set, i) =>
-        i === index ? { ...set, [name]: value } : set
+      eachExerciseRecords: prev.eachExerciseRecords.map((record, i) =>
+        i === index ? { ...record, [name]: value } : record
       ),
     }));
   };
@@ -37,14 +40,14 @@ function ExerciseForm({ exercise }) {
   const handleAddSet = () => {
     setExerciseData((prev) => ({
       ...prev,
-      sets: [
-        ...prev.sets,
+      eachExerciseRecords: [
+        ...prev.eachExerciseRecords,
         {
-          set: prev.sets.length + 1,
-          reps: 1,
-          weight: 0,
-          rpe: "Easy",
-          duration: 0,
+          weight: "",
+          reps: "",
+          sets: prev.eachExerciseRecords.length + 1,
+          duration: "",
+          prs: "",
         },
       ],
     }));
@@ -71,7 +74,7 @@ function ExerciseForm({ exercise }) {
           <span className="form-table__header-item">Duration (min)</span>
         </div>
 
-        {exerciseData.sets.map((set, index) => (
+        {exerciseData.eachExerciseRecords.map((set, index) => (
           <div key={index} className="form-table__row">
             <span>{set.set}</span>
             <input
