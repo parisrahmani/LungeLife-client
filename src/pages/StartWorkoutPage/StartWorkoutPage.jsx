@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import ExerciseModal from "../../components/ExerciseModal/ExerciseModal";
-import ExerciseForm from "../../components/ExericeForm/ExericeForm";
+import ExerciseForm from "../../components/ExerciseForm/ExerciseForm";
 
 import "./StartWorkoutPage.scss";
 
@@ -75,21 +75,26 @@ function StartWorkoutPage() {
 
   return (
     <div className="start-workout">
-      <h1 className="start-workout__title">Start Workout</h1>
-      <input
-        type="date"
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
-        className="start-workout__date-input"
-      />
-      <div className="start-workout__timer">
-        ⏱ {formatTime(elapsedTime)}
-        <button onClick={toggleTimer} className="start-workout__button">
-          {isRunning ? "Pause" : "Start"}
-        </button>
-        <button onClick={resetTimer} className="start-workout__button reset">
-          Reset
-        </button>
+      <div className="start-workout__header">
+        <h1 className="start-workout__title">Start Workout</h1>
+
+        <div className="start-workout__timer">
+          {formatTime(elapsedTime)}
+          <button onClick={toggleTimer} className="start-workout__button">
+            {isRunning ? "Pause" : "Start"}
+          </button>
+          <button onClick={resetTimer} className="start-workout__button reset">
+            Reset
+          </button>
+        </div>
+      </div>
+      <div className="start-workout__date">
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+          className="start-workout__date-input"
+        />
       </div>
 
       {showModal && (
