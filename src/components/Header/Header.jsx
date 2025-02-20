@@ -27,7 +27,7 @@ function Header() {
         <Link to="/ai-chat" className="header__link">
           💬
         </Link>
-        <Link to="/profile" className="header__link">
+        <Link to="/sign-in" className="header__link">
           👤
         </Link>
       </nav>

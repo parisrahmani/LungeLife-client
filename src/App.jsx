@@ -4,6 +4,7 @@ import ExercisePage from "./pages/ExercisePage/ExercisePage";
 import ExerciseDetailsPage from "./pages/ExerciseDetailsPage/ExerciseDetailsPage";
 import StartWorkoutPage from "./pages/StartWorkoutPage/StartWorkoutPage";
 import Header from "./components/Header/Header";
+import SignInPage from "./pages/SignInPage/SignInPage";
 import Footer from "./components/Footer/Footer";
 
 import "./App.scss";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/start/:id" element={<StartWorkoutPage />} />
         {/* <Route path="/templates/" element={<HomePage />} /> */}
         <Route path="/add" element={<HomePage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
