@@ -1,0 +1,129 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap";
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    #ff6f61,
+    #ff8e53
+  ); // Fitness-inspired vibrant colors
+
+  &__form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    transform: translateY(50px);
+    animation: fadeInUp 0.8s ease-out forwards;
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    .auth__icon {
+      font-size: 3rem;
+      color: #ff6f61;
+      margin-right: 10px;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__label {
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+  }
+
+  &__input {
+    padding: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      border-color: #ff6f61; // Highlight color for fitness theme
+      box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+      outline: none;
+    }
+  }
+
+  &__button {
+    padding: 1rem;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #ff8e53;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background-color: #e93c29;
+    }
+  }
+
+  &__toggle-text {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #555;
+  }
+
+  &__toggle-link {
+    color: #ff6f61;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
