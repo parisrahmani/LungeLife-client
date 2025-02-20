@@ -17,6 +17,7 @@ function App() {
         <Route path="/exercises" element={<ExercisePage />} />
         <Route path="/exercises/:id" element={<ExerciseDetailsPage />} />
         <Route path="/start" element={<StartWorkoutPage />} />
+        <Route path="/start/:id" element={<StartWorkoutPage />} />
         {/* <Route path="/templates/" element={<HomePage />} /> */}
         <Route path="/add" element={<HomePage />} />
       </Routes>
