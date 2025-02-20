@@ -3,9 +3,59 @@
 @use "../../styles/partials/global" as *;
 
 .start-workout {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
   &__title {
     margin: 1rem;
     text-align: start;
+  }
+
+  &__timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    padding: 12px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    width: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+
+    &__button {
+      display: flex;
+      padding: 4px 8px;
+      font-size: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #4caf50;
+        color: white;
+      }
+    }
+
+    &__button.reset {
+      background-color: #f44336;
+      color: white;
+
+      &:hover {
+        background-color: #d32f2f;
+      }
+    }
+
+    &__button:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
   }
 
   &__button-container {
@@ -35,5 +85,14 @@
     &:hover {
       background-color: #c82333;
     }
+  }
+
+  &__date {
+    margin: 1rem;
+    display: block;
+    align-self: end;
+  }
+  &__date-input {
+    padding: 1rem, 2rem;
   }
 }
