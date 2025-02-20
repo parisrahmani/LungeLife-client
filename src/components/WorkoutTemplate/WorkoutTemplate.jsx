@@ -7,16 +7,19 @@ function WorkoutTemplate({ reloadtempaltes }) {
   const [templates, setTemplates] = useState([]);
 
   useEffect(() => {
-    async function getTemplate() {
+    async function getTemplates() {
       try {
-        const response = await axios.get("http://localhost:8080/api/templates");
-
+        const response = await fetch("http://localhost:8080/api/templates");
+        const data = await response.json();
+        console.log("Fetched data:", data);
         setTemplates(data);
       } catch (err) {
-        console.error("Error fetching template:", err);
+        console.error("Error fetching templates:", err);
       }
     }
-  }, []);
+
+    getTemplates();
+  }, [reloadtempaltes]);
 
   // useEffect(() => {
   //   fetch("http://localhost:8080/api/templates")
