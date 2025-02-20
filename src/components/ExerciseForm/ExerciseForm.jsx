@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import "./ExerciseForm.scss";
+
 function ExerciseForm({ exercise }) {
   const [exerciseData, setExerciseData] = useState({
     name: "",
@@ -7,13 +9,6 @@ function ExerciseForm({ exercise }) {
     timeElapsed: 0,
     running: false,
   });
-  //   { name: "",
-  //   sets: 1,
-  //   reps: 1,
-  //   weight: 0,
-  //   rpe: "Easy",
-  //   duration: 0,
-  // });
 
   useEffect(() => {
     if (exercise?.name) {
@@ -55,32 +50,10 @@ function ExerciseForm({ exercise }) {
     }));
   };
 
-  const handleToggleTimer = () => {
-    if (!exerciseData.running) {
-      // Start the timer
-      const intervalId = setInterval(() => {
-        setExerciseData((prev) => ({
-          ...prev,
-          timeElapsed: prev.timeElapsed + 1,
-        }));
-      }, 1000);
-      setExerciseData((prev) => ({ ...prev, running: true, intervalId }));
-    } else {
-      // Stop the timer
-      clearInterval(exerciseData.intervalId);
-      setExerciseData((prev) => ({ ...prev, running: false }));
-    }
-  };
-
   return (
-    <div className="exercise-form">
-      <div className="exercise-header">
+    <div className="form">
+      <div className="form__header">
         <h3>{exerciseData.name || "Add Exercise"}</h3>
-        {/* <button onClick={handleToggleTimer}>
-          {exerciseData.running
-            ? `⏸ ${exerciseData.timeElapsed}s`
-            : `▶️ ${exerciseData.timeElapsed}s`}
-        </button> */}
       </div>
       {/* <div>
         <p>Sets</p>
@@ -89,17 +62,17 @@ function ExerciseForm({ exercise }) {
         <p>PRE</p>
         <p>Time</p>
       </div> */}
-      <div className="exercise-table">
-        <div className="table-header">
-          <span>Set</span>
-          <span>Reps</span>
-          <span>Weight (kg)</span>
-          <span>RPE</span>
-          <span>Duration (min)</span>
+      <div className="form-table">
+        <div className="form-table__header">
+          <span className="form-table__header-item">Set</span>
+          <span className="form-table__header-item">Reps</span>
+          <span className="form-table__header-item">Weight (kg)</span>
+          <span className="form-table__header-item">RPE</span>
+          <span className="form-table__header-item">Duration (min)</span>
         </div>
 
         {exerciseData.sets.map((set, index) => (
-          <div key={index} className="table-row">
+          <div key={index} className="form-table__row">
             <span>{set.set}</span>
             <input
               type="number"
@@ -137,7 +110,9 @@ function ExerciseForm({ exercise }) {
         ))}
       </div>
 
-      <button onClick={handleAddSet}>Add Set</button>
+      <button onClick={handleAddSet} className="form-table__button-set">
+        Add Set
+      </button>
     </div>
   );
 }
