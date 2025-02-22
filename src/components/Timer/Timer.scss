@@ -1,45 +1,42 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
 .timer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  font-family: Arial, sans-serif;
   padding: 12px;
+  margin: 2rem 2rem 0;
   background-color: #f4f4f4;
   border-radius: 10px;
-  //width: 100px;
+  width: 100px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
 
   &__button {
+    @include btn-style;
+    background-color: $Light_Orange;
     display: flex;
     padding: 4px 8px;
-    font-size: 8px;
-    border: none;
+    font-size: 24px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin: 0.5rem;
+    width: 28px;
     transition: background-color 0.3s ease;
-
+  }
+  &__button-play {
     &:hover {
       background-color: #4caf50;
-      color: white;
     }
   }
 
-  // &__button.reset {
-  //   background-color: #f44336;
-  //   color: white;
-
-  //   &:hover {
-  //     background-color: #d32f2f;
-  //   }
-  // }
-
-  // &__button:disabled {
-  //   background-color: #ddd;
-  //   cursor: not-allowed;
-  // }
+  &__button-reset {
+    &:hover {
+      background-color: red;
+    }
+  }
 }

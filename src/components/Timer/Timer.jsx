@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+import { FaPlay, FaPause, FaStop } from "react-icons/fa";
+
 import "./Timer.scss";
 
 function Timer() {
@@ -37,12 +39,20 @@ function Timer() {
     <div>
       <div className="timer">
         {formatTime(elapsedTime)}
-        <button onClick={toggleTimer} className="timer__button">
-          {isRunning ? "Pause" : "Start"}
-        </button>
-        <button onClick={resetTimer} className="timer__button reset">
-          Reset
-        </button>
+        <div className="time__button-container">
+          <button
+            onClick={toggleTimer}
+            className="timer__button timer__button-play"
+          >
+            {isRunning ? <FaPause /> : <FaPlay />}
+          </button>
+          <button
+            onClick={resetTimer}
+            className="timer__button timer__button-reset"
+          >
+            <FaStop />
+          </button>
+        </div>
       </div>
     </div>
   );
