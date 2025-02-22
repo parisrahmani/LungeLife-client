@@ -7,7 +7,9 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  //width: 500px;
+  margin: 2rem;
+  //max-width: 1000px;
   //margin: 2rem auto;
 
   &__title {
@@ -18,6 +20,7 @@
 }
 
 .templateCard {
+  position: relative;
   &__section {
     background-color: #fff;
     border-radius: 8px;
@@ -42,14 +45,31 @@
   }
 
   &__title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: first baseline;
     margin-bottom: 0.5rem;
   }
 
   &__name {
     color: #333;
+  }
+
+  &__note {
+    background-color: #f7dabd; // Light paper-like color
+    //border: 1px solid #dcdcdc; // Soft border
+    border-radius: 8px;
+    //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Soft shadow to make it pop
+    padding: 0.5rem;
+    //font-family: "Courier New", Courier, monospace; // Monospace font for that handwritten feel
+    font-size: 10px;
+    color: #444;
+    max-width: 50px;
+    //margin-top: 1rem;
+    margin: 0;
+    //line-height: 1.5;
+    position: absolute;
+    right: 0;
   }
 
   &__date {
@@ -72,4 +92,7 @@
       border-bottom: 1px solid #eee;
     }
   }
+}
+
+.section-note {
 }

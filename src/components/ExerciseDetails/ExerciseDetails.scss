@@ -7,17 +7,19 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: $silver; // Silver cloud color
+  // border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 800px;
-  //margin: 2rem auto;
+  color: $dark-blue; // Dark blue as primary text color
+  text-align: center;
 
   &__title {
-    // font-size: 2rem;
-    // font-weight: bold;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
     margin-bottom: 1rem;
-    color: $dark-blue;
+    color: $orange; // Touch of orange for the title
   }
 
   &__image {
@@ -26,14 +28,30 @@
     height: auto;
     border-radius: 8px;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__info {
     width: 100%;
     text-align: left;
+    background: rgba(255, 255, 255, 0.82);
+    padding: 1rem;
+    border-radius: 8px;
 
     p {
       margin: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    strong {
+      color: $orange; // Touch of orange for emphasis
+      font-weight: bold;
     }
   }
 }

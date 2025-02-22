@@ -3,44 +3,196 @@
 @use "../../styles/partials/global" as *;
 
 .form {
-  &__header {
-    margin: 1rem;
+  //max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form__header {
+  margin-bottom: 1rem;
+  text-align: center;
+  h3 {
+    font-size: 1.5rem;
+    color: $black;
   }
+}
+
+.start-workout__date-input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid $cloud;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $dark-blue;
+  background-color: #f9f9f9;
+
+  &:focus {
+    border-color: $cloud;
+    outline: none;
+  }
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: $cloud;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  // &:hover {
+  //   background-color: darken($cloud, 10%);
+  // }
 }
 
 .form-table {
-  margin: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: left;
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    //gap: 20px;
-  }
-  // &__header-item {
-  //   width: 20%;
-  // }
-  &__row {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid $cloud;
-    padding: 1rem 0;
-    // width: 20%;
+  thead {
+    background-color: #f4f4f4;
   }
 
-  &__button-set {
-    margin-left: 1rem;
+  th,
+  td {
+    padding: 0.75rem;
+    //border: 1px solid #ddd;
+    text-align: center;
+  }
 
-    // @include btn-style;
-    @include secondary-btn;
-    // background-color: $cloud;
-    width: 100px;
+  th {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #eef;
+    }
+  }
+
+  input,
+  select {
+    width: 80%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+
+  select {
+    cursor: pointer;
   }
 }
 
-input {
-  width: 20vw;
-}
+// .form-table {
+//   width: 100%;
+//   margin-bottom: 1rem;
 
-// span {
-//   width: 20px;
+//   &__header {
+//     display: flex;
+//     justify-content: space-between;
+//     font-weight: bold;
+//     background-color: #f1f1f1;
+//     padding: 0.75rem 0;
+//     border-radius: 8px;
+//   }
+
+//   &__header-item {
+//     width: 18%;
+//     text-align: center;
+//   }
+
+//   &__row {
+//     display: flex;
+//     justify-content: space-between;
+//     border-bottom: 1px solid $cloud;
+//     padding: 1rem 0;
+//     font-size: 1rem;
+
+//     &:last-child {
+//       border-bottom: none;
+//     }
+//   }
+
+//   &__row input,
+//   &__row select {
+//     width: 18%;
+//     padding: 0.5rem;
+//     margin-right: 10px;
+//     border-radius: 8px;
+//     border: 1px solid $cloud;
+//     font-size: 1rem;
+//     background-color: #f9f9f9;
+
+//     &:focus {
+//       border-color: $cloud;
+//       outline: none;
+//     }
+//   }
+
+//   &__button-set {
+//     padding: 0.75rem;
+//     background-color: $cloud;
+//     color: #fff;
+//     border: none;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     margin-top: 1rem;
+//     font-size: 1rem;
+
+//     &:hover {
+//       background-color: darken($cloud, 10%);
+//     }
+//   }
+// }
+
+// input[type="number"],
+// select {
+//   width: 18%;
+// }
+
+// @media (max-width: 768px) {
+//   .form-table__header,
+//   .form-table__row {
+//     flex-direction: column;
+//     align-items: stretch;
+//   }
+
+//   .form-table__header-item,
+//   .form-table__row input,
+//   .form-table__row select {
+//     width: 100%;
+//     margin-bottom: 1rem;
+//   }
+
+//   .form-table__row {
+//     padding: 1rem 0;
+//   }
+
+//   .form__header h3 {
+//     font-size: 1.25rem;
+//   }
 // }

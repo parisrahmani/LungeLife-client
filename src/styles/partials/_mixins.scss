@@ -91,9 +91,9 @@
 }
 
 @mixin btn-style {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  border-radius: 20px;
+  border-radius: 8px;
   border: none;
   padding: 0.5rem 1rem;
   width: 46%;
@@ -106,29 +106,32 @@
   line-height: 1.375rem;
   width: auto;
   height: 2.375rem;
+  transition: background-color 0.3s ease;
 }
 
 @mixin primary-btn {
-  background-color: $dark-blue;
+  background-color: $Pastel_Orange;
   color: $white;
 }
 
 @mixin primary-hover {
   //background-color: $orange;
-  color: $cloud;
-  border-color: $orange;
+  //color: $orange;
+  background-color: $graphite;
   font-style: bold;
   border: none;
 }
 
 @mixin secondary-btn {
-  background-color: $white;
-  color: $slate;
+  background-color: $orange;
+  color: $white;
 }
 
 @mixin secondary-hover {
-  border: 1.5x solid $instock-indigo;
-  color: $instock-indigo;
+  //border: 1.5x solid $instock-indigo;
+  background-color: $orangered;
+  color: $white;
+  font-size: large;
 }
 
 @mixin delete-btn {
