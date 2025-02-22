@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ExercisePage from "./pages/ExercisePage/ExercisePage";
 import ExerciseDetailsPage from "./pages/ExerciseDetailsPage/ExerciseDetailsPage";
 import StartWorkoutPage from "./pages/StartWorkoutPage/StartWorkoutPage";
-import Header from "./components/Header/Header";
+
 import SignInPage from "./pages/SignInPage/SignInPage";
 import Footer from "./components/Footer/Footer";
 
@@ -12,7 +12,6 @@ import "./App.scss";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/exercises" element={<ExercisePage />} />
