@@ -7,7 +7,7 @@ import ExerciseModal from "../../components/ExerciseModal/ExerciseModal";
 // import WorkoutTemplate from "../WorkoutTemplate/WorkoutTemplate.jsx";
 
 function NewTemplate({ setTemplates, setReloadTemplates }) {
-  const today = new Date();
+  const today = new Date().toLocaleDateString("en-CA");
   console.log(today);
 
   //const [reloadTemplates, setReloadTemplates] = useState(false);
