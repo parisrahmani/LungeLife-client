@@ -5,12 +5,14 @@ import axios from "axios";
 import "./ExerciseForm.scss";
 
 function ExerciseForm({ exercise }) {
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
   const [exerciseData, setExerciseData] = useState({
     user_id: "user-01",
     exercise_id: "",
-    date: "",
-    exerciseRecords: [{ weight: "", reps: "", sets: 1, duration: "", prs: "" }],
+    date: new Date().toISOString().split("T")[0],
+    exerciseRecords: [{ weight: "", reps: 1, sets: 1, duration: "", prs: "" }],
   });
 
   useEffect(() => {
@@ -20,7 +22,7 @@ function ExerciseForm({ exercise }) {
         name: exercise.name,
         exerciseRecords: prev.exerciseRecords.length
           ? prev.exerciseRecords
-          : [{ weight: "", reps: "", sets: 1, duration: "", prs: "" }],
+          : [{ weight: "", reps: 1, sets: 1, duration: "", prs: "" }],
       }));
     }
   }, [exercise]);
@@ -44,7 +46,7 @@ function ExerciseForm({ exercise }) {
         ...prev.exerciseRecords,
         {
           weight: "",
-          reps: "",
+          reps: 1,
           sets: prev.exerciseRecords.length + 1,
           duration: "",
           prs: "",
@@ -57,12 +59,13 @@ function ExerciseForm({ exercise }) {
     event.preventDefault();
 
     console.log(exercise);
+    console.log(exerciseData);
     console.log(exerciseData.exerciseRecords);
 
     const formData = {
       user_id: "user-01",
       exercise_id: exercise.id,
-      date: selectedDate,
+      date: new Date(selectedDate).toISOString().split("T")[0],
       exerciseRecords: exerciseData.exerciseRecords.map(
         ({ weight, reps, duration, prs }) => ({
           weight: weight,
@@ -72,7 +75,7 @@ function ExerciseForm({ exercise }) {
         })
       ),
     };
-
+    console.log(formData);
     try {
       const response = await fetch("http://localhost:8080/api/progress", {
         method: "POST",
