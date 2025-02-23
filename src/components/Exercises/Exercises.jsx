@@ -5,13 +5,19 @@ import Select from "react-select";
 import "./Exercises.scss";
 
 import searchIcon from "../../assets/Icons/search-24px.svg";
+import ExerciseDetails from "../../components/ExerciseDetails/ExerciseDetails";
+import ExerciseProgress from "../ExerciseProgress/ExerciseProgress";
 
-const Exercises = () => {
+const Exercises = ({ id }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [primary_muscles, setBodyPart] = useState("");
   const [level, setLevel] = useState("");
   const [category, setCategory] = useState("");
   const [exercises, setExercises] = useState([]);
+  // const [exerciseInfo, setExerciseInfo] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState(null);
+  //const [showProgress, setShowProgress] = useState(false);
+  const [view, setView] = useState(null);
 
   const leg = ["quadriceps", "hamstrings", "calves", "adductors"];
   const core = ["abdominals", "obliques", "lower back"];
@@ -96,6 +102,17 @@ const Exercises = () => {
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const handleExerciseClick = (exerciseId) => {
+    if (selectedExercise === exerciseId) {
+      // If clicking the same exercise again, close everything
+      setSelectedExercise(null);
+      setView(null);
+    } else {
+      setSelectedExercise(exerciseId);
+      setView(null); // Reset view when selecting a new exercise
+    }
+  };
+
   return (
     <div className="exercise">
       <div className="exercise__search">
@@ -111,67 +128,87 @@ const Exercises = () => {
           src={searchIcon}
           alt="Search Icon"
         />
-
-        {/* <Link> */}
-        {/* <img
-            className="searchForm__search-icon"
-            src={searchIcon}
-            alt="Search Icon"
-          /> */}
-        {/* <button className="searchForm__button searchForm__button--primary">
-            Search
-          </button> */}
-        {/* </Link> */}
       </div>
+      <div className="exercise__filter-exercise">
+        <div className="exercise__filter-container">
+          <div className="exercise__filter">
+            <Select
+              options={bodyPartOptions}
+              value={bodyPartOptions.find(
+                (option) => option.value === primary_muscles
+              )}
+              onChange={(selectedOption) => setBodyPart(selectedOption.value)}
+              placeholder="Body Part"
+              classNames={{
+                control: () => "exercise__filter-item",
+                menu: () => "exercise__filter-menu",
+                option: () => "exercise__filter-option",
+              }}
+            />
 
-      <div className="exercise__filter">
-        <Select
-          options={bodyPartOptions}
-          value={bodyPartOptions.find(
-            (option) => option.value === primary_muscles
+            <Select
+              options={categoryOptions}
+              value={categoryOptions.find(
+                (option) => option.value === category
+              )}
+              onChange={(selectedOption) => setCategory(selectedOption.value)}
+              placeholder="Category"
+              classNames={{
+                control: () => "exercise__filter-item",
+                menu: () => "exercise__filter-menu",
+                option: () => "exercise__filter-option",
+              }}
+            />
+          </div>
+        </div>
+        <ul className="exercise__list">
+          {selectedExercise && (
+            <div className="exercise__buttons">
+              <button onClick={() => setView("info")}>Info</button>
+              <button onClick={() => setView("progress")}>Progress</button>
+            </div>
           )}
-          onChange={(selectedOption) => setBodyPart(selectedOption.value)}
-          placeholder="Body Part"
-          classNames={{
-            control: () => "exercise__filter-item",
-            menu: () => "exercise__filter-menu",
-            option: () => "exercise__filter-option",
-          }}
-        />
-        {/* <Select
-          options={levelOptions}
-          value={levelOptions.find((option) => option.value === level)}
-          onChange={(selectedOption) => setLevel(selectedOption.value)}
-          className="exercise__filter-item"
-          placeholder="Select Level"
-        /> */}
-        <Select
-          options={categoryOptions}
-          value={categoryOptions.find((option) => option.value === category)}
-          onChange={(selectedOption) => setCategory(selectedOption.value)}
-          placeholder="Category"
-          classNames={{
-            control: () => "exercise__filter-item",
-            menu: () => "exercise__filter-menu",
-            option: () => "exercise__filter-option",
-          }}
-        />
-      </div>
-      <ul className="exercise__list">
-        {filteredExercises.map((exercise) => (
-          <Link
-            to={`/exercises/${exercise.id}`}
-            key={exercise.id}
-            className="image-grid__link"
-          >
-            <li key={exercise.id} className="exercise__item">
-              {/* <input
-              type="checkbox"
-              className="exercise__checkbox"
-              checked={selectedExercises.some((e) => e.id === exercise.id)}
-              onChange={() => onSelect(exercise)}
-            /> */}
+          {filteredExercises.map((exercise) => (
+            <div key={exercise.id} className="exercise__container">
+              <li
+                className="exercise__item"
+                onClick={() => handleExerciseClick(exercise.id)}
+              >
+                <img
+                  src={`http://localhost:8080${exercise.images[0]}`}
+                  alt={exercise.name}
+                  className="exercise__image"
+                />
+                <div>
+                  <h3 className="exercise__name">{exercise.name}</h3>
+                </div>
+              </li>
 
+              {/* Show buttons when an exercise is selected */}
+              <div className="exercise__options">
+                {/* Show the correct component based on button click */}
+                {selectedExercise === exercise.id && view === "info" && (
+                  <ExerciseDetails exercise={exercise} />
+                )}
+                {
+                  selectedExercise === exercise.id && view === "progress" && (
+                    <ExerciseProgress exercise_id={exercise.id} />
+                  )
+
+                  // <Progress exercise={exercise} />
+                }
+              </div>
+            </div>
+          ))}
+        </ul>
+      </div>
+      {/* <ul className="exercise__list">
+        {filteredExercises.map((exercise) => (
+          <div key={exercise.id}>
+            <li
+              className="exercise__item"
+              onClick={() => setExerciseInfo(!exerciseInfo)}
+            >
               <img
                 src={`http://localhost:8080${exercise.images[0]}`}
                 alt={exercise.name}
@@ -181,9 +218,10 @@ const Exercises = () => {
                 <h3 className="exercise__name">{exercise.name}</h3>
               </div>
             </li>
-          </Link>
+            {exerciseInfo && <ExerciseDetails exercise={exercise} />}
+          </div>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
