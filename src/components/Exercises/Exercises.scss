@@ -29,13 +29,17 @@
     transform: translateY(-50%);
     color: $dark-blue;
   }
+  &__filter-container {
+    display: flex;
+  }
 
   &__filter {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 2rem 1rem;
+    margin: 0 1rem;
     gap: 1rem;
+    width: 50%;
   }
 
   &__filter-item {
@@ -76,7 +80,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding-top: 1rem;
   }
 
   &__item {
@@ -86,6 +90,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
+    width: 50%;
 
     &:hover {
       transform: translateY(-4px);
@@ -101,5 +106,26 @@
     max-height: 80px;
     object-fit: cover;
     border-radius: 4px;
+  }
+
+  &__options {
+    margin-right: 1rem;
+    display: flex;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    gap: 2rem;
+  }
+  &__filter-exercise {
+    //width: 40%;
   }
 }
