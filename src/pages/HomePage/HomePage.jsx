@@ -22,8 +22,7 @@ function Homepage() {
 
       <Link to="/start">
         <button className="newSession__start-exercise-button">
-          {" "}
-          Start a new workout
+          Start without Template
         </button>
       </Link>
 
@@ -32,7 +31,7 @@ function Homepage() {
           className="add-template__button"
           onClick={() => setaddNewTemplate(!addNewTemplate)}
         >
-          Toggle Panel
+          + New Template
         </button>
         {addNewTemplate && <NewTemplate setTemplates={setTemplates} />}
       </div>
