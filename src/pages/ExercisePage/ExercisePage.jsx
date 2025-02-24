@@ -7,9 +7,9 @@ import "./ExercisePage.scss";
 
 function ExercisePage() {
   return (
-    <div>
+    <div className="exercise-page">
       <Header />
-      <h1 className="exercise-page__header">Exercise List</h1>
+      <h1 className="exercise-page__header">Exercises Library</h1>
       <Exercises />
     </div>
   );
