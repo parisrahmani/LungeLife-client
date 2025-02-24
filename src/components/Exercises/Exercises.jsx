@@ -162,12 +162,6 @@ const Exercises = ({ id }) => {
           </div>
         </div>
         <ul className="exercise__list">
-          {selectedExercise && (
-            <div className="exercise__buttons">
-              <button onClick={() => setView("info")}>Info</button>
-              <button onClick={() => setView("progress")}>Progress</button>
-            </div>
-          )}
           {filteredExercises.map((exercise) => (
             <div key={exercise.id} className="exercise__container">
               <li
@@ -183,45 +177,43 @@ const Exercises = ({ id }) => {
                   <h3 className="exercise__name">{exercise.name}</h3>
                 </div>
               </li>
-
-              {/* Show buttons when an exercise is selected */}
-              <div className="exercise__options">
-                {/* Show the correct component based on button click */}
-                {selectedExercise === exercise.id && view === "info" && (
-                  <ExerciseDetails exercise={exercise} />
+              <div className="exercise__details-section">
+                {/* Show buttons when an exercise is selected */}
+                {selectedExercise === exercise.id && (
+                  <div className="exercise__buttons">
+                    <button
+                      onClick={() => setView("info")}
+                      className="exercise__buttons-each"
+                    >
+                      Info
+                    </button>
+                    <button
+                      onClick={() => setView("progress")}
+                      className="exercise__buttons-each"
+                    >
+                      Progress
+                    </button>
+                  </div>
                 )}
-                {
-                  selectedExercise === exercise.id && view === "progress" && (
-                    <ExerciseProgress exercise_id={exercise.id} />
-                  )
 
-                  // <Progress exercise={exercise} />
-                }
+                <div className="exercise__options">
+                  {/* Show the correct component based on button click */}
+                  {selectedExercise === exercise.id && view === "info" && (
+                    <ExerciseDetails exercise={exercise} />
+                  )}
+                  {
+                    selectedExercise === exercise.id && view === "progress" && (
+                      <ExerciseProgress exercise_id={exercise.id} />
+                    )
+
+                    // <Progress exercise={exercise} />
+                  }
+                </div>
               </div>
             </div>
           ))}
         </ul>
       </div>
-      {/* <ul className="exercise__list">
-        {filteredExercises.map((exercise) => (
-          <div key={exercise.id}>
-            <li
-              className="exercise__item"
-              onClick={() => setExerciseInfo(!exerciseInfo)}
-            >
-              <img
-                src={`http://localhost:8080${exercise.images[0]}`}
-                alt={exercise.name}
-                className="exercise__image"
-              />
-              <div>
-                <h3 className="exercise__name">{exercise.name}</h3>
-              </div>
-            </li>
-            {exerciseInfo && <ExerciseDetails exercise={exercise} />}
-          </div>
-        ))}
-      </ul> */}
     </div>
   );
 };
