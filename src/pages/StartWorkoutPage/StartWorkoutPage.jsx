@@ -14,10 +14,6 @@ function StartWorkoutPage() {
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [addedExercises, setAddedExercises] = useState([]);
 
-  // const [selectedDate, setSelectedDate] = useState("");
-  // const [elapsedTime, setElapsedTime] = useState(0);
-  // const [isRunning, setIsRunning] = useState(false);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -49,38 +45,11 @@ function StartWorkoutPage() {
     setShowModal(false);
   };
 
-  // useEffect(() => {
-  //   let interval;
-  //   if (isRunning) {
-  //     interval = setInterval(() => {
-  //       setElapsedTime((prev) => prev + 1);
-  //     }, 1000);
-  //   } else {
-  //     clearInterval(interval);
-  //   }
-  //   return () => clearInterval(interval);
-  // }, [isRunning]);
-
-  // const formatTime = (seconds) => {
-  //   const mins = Math.floor(seconds / 60);
-  //   const secs = seconds % 60;
-  //   return `${mins}:${secs.toString().padStart(2, "0")}`;
-  // };
-
-  // const toggleTimer = () => {
-  //   setIsRunning((prev) => !prev);
-  // };
-
-  // const resetTimer = () => {
-  //   setIsRunning(false);
-  //   setElapsedTime(0);
-  // };
-
   return (
     <div className="start-workout">
       <Header />
       <div className="start-workout__header">
-        <h1 className="start-workout__title">Start Workout</h1>
+        <h1 className="start-workout__title"> </h1>
         <Timer />
       </div>
 

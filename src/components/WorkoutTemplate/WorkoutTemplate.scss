@@ -8,14 +8,17 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   //width: 500px;
-  margin: 2rem;
+  margin: 1rem 2rem;
   //max-width: 1000px;
   //margin: 2rem auto;
-
-  &__title {
+  position: relative &__title {
     margin-bottom: 1rem;
     color: #333;
     text-align: start;
+  }
+
+  &__title {
+    margin: 1rem 0 2rem;
   }
 }
 
@@ -56,52 +59,12 @@
     // display: flex;
     // justify-content: space-between;
     // align-items: first baseline;
-    margin-bottom: 0.5rem;
+    margin: 1rem 0 0.5rem;
     padding-top: 2rem;
   }
 
   &__name {
     color: #333;
-  }
-
-  &__note {
-    position: relative;
-  }
-
-  &__note-icon {
-    position: absolute;
-    top: -72px;
-    right: -16px;
-
-    // @include tablet {
-    //   top: -40px;
-    //   right: -16px;
-    // }
-  }
-  &__note-text {
-    background-color: #f7dabd; // Light paper-like color
-    border-radius: 8px;
-
-    font-size: 10px;
-    color: #444;
-
-    position: absolute;
-    top: -80px;
-    right: 4px;
-    transform: translate(
-      20px,
-      10px
-    ); // Optional for more space from top and right edges
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 28px;
-    width: auto;
-    padding: 0.5rem;
-    padding-right: 2rem;
-
-    // @include tablet {
-    //   top: -40px;
-    //   right: 4px;
-    // }
   }
 
   &__date {
@@ -157,5 +120,75 @@
     // @include tablet {
     //   display: flex;
     // }
+  }
+  &__deleteButton {
+    background-color: $white;
+    border: none;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+}
+
+.note {
+  position: absolute;
+  right: 0px;
+  top: 8px;
+
+  &__paper-clip-icon {
+    position: absolute;
+    top: -8px;
+    right: 0px;
+
+    // @include tablet {
+    //   top: -40px;
+    //   right: -16px;
+    // }
+  }
+
+  &__edit-icon {
+    position: absolute;
+    top: 4px;
+    left: -24px;
+    background-color: $white;
+    border: none;
+    padding: 0;
+  }
+
+  &__text {
+    background-color: #f7dabd; // Light paper-like color
+    border-radius: 4px;
+    //height: 28px;
+    width: auto;
+    font-size: 10px;
+    color: #444;
+    @include note-font;
+
+    transform: translate(
+      20px,
+      10px
+    ); // Optional for more space from top and right edges
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    padding: 1rem;
+    padding-right: 3rem;
+
+    // @include tablet {
+    //   top: -40px;
+    //   right: 4px;
+    // }
+  }
+  &__new {
+    display: flex;
+    gap: 1rem;
+  }
+  &__new-text {
+    border: 1px solid #f7dabd;
+    background-color: $white;
+    padding: 0 0.5rem;
+  }
+  &__new-save {
+    background-color: $white;
+    border: none;
   }
 }

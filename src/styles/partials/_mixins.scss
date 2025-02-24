@@ -95,7 +95,7 @@
   font-weight: 400;
   border-radius: 8px;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   width: 46%;
   cursor: pointer;
 }
@@ -105,7 +105,7 @@
   font-weight: 400;
   line-height: 1.375rem;
   width: auto;
-  height: 2.375rem;
+  height: 2rem;
   transition: background-color 0.3s ease;
 }
 
@@ -117,19 +117,19 @@
 @mixin primary-hover {
   //background-color: $orange;
   //color: $orange;
-  background-color: $graphite;
+  background-color: $Bright_Orange;
   font-style: bold;
   border: none;
 }
 
 @mixin secondary-btn {
-  background-color: $orange;
-  color: $white;
+  background-color: $silver;
+  color: $black;
 }
 
 @mixin secondary-hover {
   //border: 1.5x solid $instock-indigo;
-  background-color: $orangered;
+  background-color: $Light_Orange;
   color: $white;
   font-size: large;
 }
@@ -140,7 +140,7 @@
 }
 
 @mixin form-focus {
-  border: 1.5px solid $instock-indigo;
+  border: 1.5px solid $Dark_Orange;
   outline: none;
 }
 
@@ -179,4 +179,9 @@
   font-weight: 500;
   color: $slate;
   text-transform: uppercase;
+}
+
+@mixin note-font {
+  font-family: Handlee;
+  font-size: 10px;
 }

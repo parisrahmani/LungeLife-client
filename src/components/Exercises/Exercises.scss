@@ -6,6 +6,11 @@
 .exercise {
   display: flex;
   flex-direction: column;
+  max-width: 1200px;
+
+  //align-items: center;
+  margin: 0 auto;
+  background-color: #f9f9f9;
 
   &__search {
     display: flex;
@@ -13,6 +18,7 @@
     align-items: center;
     position: relative;
     margin: 0;
+    width: 55%;
   }
 
   &__search-input {
@@ -87,10 +93,11 @@
     display: flex;
     align-items: center;
     margin: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
     width: 50%;
+    background-color: $white;
 
     &:hover {
       transform: translateY(-4px);
@@ -115,15 +122,33 @@
 
   &__container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  &__details-section {
+    display: flex;
+    flex-direction: column;
   }
 
   &__buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 1rem;
-    gap: 2rem;
+    width: 100%;
+    //gap: 2rem;
+  }
+
+  &__buttons-each {
+    @include btn-style;
+    @include primary-btn;
+    width: 100%;
+    margin: 0 1rem;
+    &:hover {
+      @include primary-hover;
+    }
   }
   &__filter-exercise {
     //width: 40%;

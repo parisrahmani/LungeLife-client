@@ -31,3 +31,25 @@
     url("src/assets/Font/Outfit-Light.woff") format("woff");
   font-weight: 300;
 }
+
+@font-face {
+  font-family: "Handlee";
+  src: url("src/assets/Font/Handlee-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HanDancingScript-VariableFont_wghtdlee";
+  src: url("src/assets/Font/DancingScript-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoFlex-Regular";
+  src: url("src/assets/Font/RobotoFlex-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}

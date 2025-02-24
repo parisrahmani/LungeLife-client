@@ -1,104 +1,255 @@
+// @use "../../styles/partials/mixins" as *;
+// @use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/global" as *;
+
+// .form {
+
+//   //max-width: 400px;
+//   margin: 0 auto;
+//   padding: 1rem;
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+// }
+
+// .form__header {
+//   margin-bottom: 1rem;
+//   text-align: center;
+//   h3 {
+//     font-size: 1.5rem;
+//     color: $black;
+//   }
+// }
+
+// .start-workout__date-input {
+//   display: block;
+//   width: 100%;
+//   padding: 0.5rem;
+//   margin-bottom: 1rem;
+//   border: 1px solid $cloud;
+//   border-radius: 8px;
+//   font-size: 1rem;
+//   color: $dark-blue;
+//   background-color: #f9f9f9;
+
+//   &:focus {
+//     border-color: $cloud;
+//     outline: none;
+//   }
+// }
+
+// button {
+//   display: block;
+//   width: 100%;
+//   padding: 0.75rem;
+//   background-color: $cloud;
+//   color: #fff;
+//   border: none;
+//   border-radius: 8px;
+//   font-size: 1rem;
+//   cursor: pointer;
+//   margin-bottom: 1rem;
+
+//   // &:hover {
+//   //   background-color: darken($cloud, 10%);
+//   // }
+// }
+
+// .form-table {
+//   width: 100%;
+//   border-collapse: collapse;
+//   margin-top: 1rem;
+//   font-size: 1rem;
+//   text-align: left;
+
+//   thead {
+//     background-color: #f4f4f4;
+//   }
+
+//   th,
+//   td {
+//     padding: 0.75rem;
+//     //border: 1px solid #ddd;
+//     text-align: center;
+//   }
+
+//   th {
+//     font-weight: bold;
+//     text-transform: uppercase;
+//   }
+
+//   tbody {
+//     tr:nth-child(even) {
+//       background-color: #f9f9f9;
+//     }
+
+//     tr:hover {
+//       background-color: #eef;
+//     }
+//   }
+
+//   input,
+//   select {
+//     width: 80%;
+//     padding: 0.5rem;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     font-size: 1rem;
+//     text-align: center;
+
+//     &:focus {
+//       border-color: #007bff;
+//       outline: none;
+//     }
+//   }
+
+//   select {
+//     cursor: pointer;
+//   }
+// }
+
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/global" as *;
 
 .form {
-  //max-width: 400px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 1rem auto;
+
   padding: 1rem;
-  background-color: #fff;
+  background-color: $white; // Assuming $white is part of your theme
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
 
-.form__header {
-  margin-bottom: 1rem;
-  text-align: center;
-  h3 {
-    font-size: 1.5rem;
-    color: $black;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 1rem;
+    width: 100%;
   }
-}
-
-.start-workout__date-input {
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid $cloud;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: $dark-blue;
-  background-color: #f9f9f9;
-
-  &:focus {
-    border-color: $cloud;
-    outline: none;
+  &__title {
+    //margin-bottom: 2rem 0;
+    text-align: center;
   }
-}
 
-button {
-  display: block;
-  width: 100%;
-  padding: 0.75rem;
-  background-color: $cloud;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 1rem;
+  &__date {
+    //display: flex;
+    width: 30%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid $cloud;
+    border-radius: 8px;
+    font-size: 1rem;
+    //color: $dark-blue;
+    //background-color: #f9f9f9;
 
-  // &:hover {
-  //   background-color: darken($cloud, 10%);
+    &:focus {
+      border-color: $Light_Orange;
+      outline: none;
+    }
+  }
+
+  &__submit {
+    @include btn-style;
+    @include primary-btn;
+    width: 30%;
+    // width: 100%;
+    //padding: 0.75rem;
+    //background-color: $cloud; // This button uses $cloud as background
+    margin-bottom: 1rem;
+  }
+
+  &__add {
+    @include btn-style;
+    @include secondary-btn;
+    max-width: 30%;
+    color: $Bright_Orange;
+    display: flex;
+    justify-content: center;
+    //align-items: center;
+    // width: 100%;
+    //padding: 0.75rem;
+    //background-color: $cloud; // This button uses $cloud as background
+
+    //border: none;
+    //border-radius: 8px;
+    //font-size: 1rem;
+    //cursor: pointer;
+    //margin-bottom: 1rem;
+  }
+
+  // button {
+  //   display: block;
+  //   width: 100%;
+  //   padding: 0.75rem;
+  //   background-color: $cloud; // This button uses $cloud as background
+  //   color: #fff;
+  //   border: none;
+  //   border-radius: 8px;
+  //   font-size: 1rem;
+  //   cursor: pointer;
+  //   margin-bottom: 1rem;
+
+  //   &:hover {
+  //     background-color: $graphite;
+  //   }
   // }
 }
 
 .form-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
-  font-size: 1rem;
-  text-align: left;
+  //margin-top: 1rem;
+  //font-size: 1rem;
+  //text-align: left;
 
   thead {
-    background-color: #f4f4f4;
+    background-color: $silver;
+    //border-radius: 4px;
   }
 
   th,
   td {
     padding: 0.75rem;
-    //border: 1px solid #ddd;
     text-align: center;
+    //border-radius: 4px;
   }
 
   th {
     font-weight: bold;
     text-transform: uppercase;
+    font-size: 0.9rem;
+    //color: $dark-blue; // To make headers stand out
   }
 
   tbody {
     tr:nth-child(even) {
-      background-color: #f9f9f9;
+      background-color: $white;
     }
 
     tr:hover {
-      background-color: #eef;
+      background-color: $Light_Orange; // Assuming $hover-gray is defined for a subtle hover effect
     }
   }
 
   input,
   select {
+    @include form-field;
     width: 80%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    // width: 80%;
+    // padding: 0.5rem;
+    // border: 1px solid $cloud;
+    // border-radius: 4px;
     font-size: 1rem;
-    text-align: center;
+    // text-align: center;
 
     &:focus {
-      border-color: #007bff;
-      outline: none;
+      @include form-focus;
     }
   }
 
@@ -106,93 +257,3 @@ button {
     cursor: pointer;
   }
 }
-
-// .form-table {
-//   width: 100%;
-//   margin-bottom: 1rem;
-
-//   &__header {
-//     display: flex;
-//     justify-content: space-between;
-//     font-weight: bold;
-//     background-color: #f1f1f1;
-//     padding: 0.75rem 0;
-//     border-radius: 8px;
-//   }
-
-//   &__header-item {
-//     width: 18%;
-//     text-align: center;
-//   }
-
-//   &__row {
-//     display: flex;
-//     justify-content: space-between;
-//     border-bottom: 1px solid $cloud;
-//     padding: 1rem 0;
-//     font-size: 1rem;
-
-//     &:last-child {
-//       border-bottom: none;
-//     }
-//   }
-
-//   &__row input,
-//   &__row select {
-//     width: 18%;
-//     padding: 0.5rem;
-//     margin-right: 10px;
-//     border-radius: 8px;
-//     border: 1px solid $cloud;
-//     font-size: 1rem;
-//     background-color: #f9f9f9;
-
-//     &:focus {
-//       border-color: $cloud;
-//       outline: none;
-//     }
-//   }
-
-//   &__button-set {
-//     padding: 0.75rem;
-//     background-color: $cloud;
-//     color: #fff;
-//     border: none;
-//     border-radius: 8px;
-//     cursor: pointer;
-//     margin-top: 1rem;
-//     font-size: 1rem;
-
-//     &:hover {
-//       background-color: darken($cloud, 10%);
-//     }
-//   }
-// }
-
-// input[type="number"],
-// select {
-//   width: 18%;
-// }
-
-// @media (max-width: 768px) {
-//   .form-table__header,
-//   .form-table__row {
-//     flex-direction: column;
-//     align-items: stretch;
-//   }
-
-//   .form-table__header-item,
-//   .form-table__row input,
-//   .form-table__row select {
-//     width: 100%;
-//     margin-bottom: 1rem;
-//   }
-
-//   .form-table__row {
-//     padding: 1rem 0;
-//   }
-
-//   .form__header h3 {
-//     font-size: 1.25rem;
-//   }
-// }
