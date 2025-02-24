@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FaPaperclip } from "react-icons/fa";
+import { FaPaperclip, FaTrash, FaSave, FaPencilAlt } from "react-icons/fa";
 
 import "./WorkoutTemplate.scss";
+import EditTemplate from "../EditTemplate/EditTemplate";
 
 function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
   const [exerciseData, setExerciseData] = useState({});
+  //const [editingTemplate, setEditingTemplate] = useState(null);
+  const [editingNotes, setEditingNotes] = useState(null);
+  const [newNotes, setNewNotes] = useState("");
 
   useEffect(() => {
     async function getTemplates() {
@@ -48,31 +52,110 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
     fetchExercises();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      // Make DELETE request to server
+      await axios.delete(`http://localhost:8080/api/templates/${id}`);
+      // Remove template from state after successful deletion
+      setTemplates((prevTemplates) =>
+        prevTemplates.filter((template) => template.id !== id)
+      );
+      console.log("Template deleted successfully");
+    } catch (error) {
+      console.error("Error deleting template:", error);
+    }
+  };
+
+  const handleEditNotes = (template) => {
+    setEditingNotes(template.id);
+    setNewNotes(template.notes);
+  };
+
+  const handleSaveNotes = async (id) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/templates/each/${id}`,
+        { notes: newNotes }
+      );
+
+      if (response.status === 200) {
+        // Update state with new notes if the response is successful
+        setTemplates((prevTemplates) =>
+          prevTemplates.map((template) =>
+            template.id === id ? { ...template, notes: newNotes } : template
+          )
+        );
+        setEditingNotes(null); // Exit edit mode
+      } else {
+        console.error("Failed to update notes:", response.data);
+      }
+    } catch (error) {
+      console.error("Error updating notes:", error);
+    }
+  };
+
   return (
     <section className="templateSection">
-      <h1 className="templateSection__title">Sample Templates</h1>
+      <h2 className="templateSection__title">Workout Templates</h2>
       <div className="templateCard">
         <ul className="templateCard__list">
           {templates &&
             templates.map((template) => (
               <li key={template.id} className="templateCard__item">
-                <Link
-                  to={`/start/${template.id}`}
-                  className="templateCard__link"
-                >
-                  <div className="templateCard__section">
-                    <div className="templateCard__title">
-                      <h3 className="templateCard__name">
-                        {template.template_name}
-                      </h3>
-                      <p className="templateCard__note">
-                        <div className="templateCard__note-text">
-                          {template.notes}
-                        </div>
-                        <FaPaperclip className="templateCard__note-icon" />
+                <div className="templateCard__section">
+                  <div className="templateCard__title">
+                    {/* <p className="templateCard__note">
+                      <div className="templateCard__note-text">
+                        {template.notes}
+                      </div>
+                      <FaPaperclip className="templateCard__note-icon" />
+                    </p> */}
+                    {editingNotes === template.id ? (
+                      <div className="note__new">
+                        <textarea
+                          value={newNotes}
+                          onChange={(e) => setNewNotes(e.target.value)}
+                          className="note__new-text"
+                        />
+                        <button
+                          onClick={() => handleSaveNotes(template.id)}
+                          className="note__new-save"
+                        >
+                          <FaSave />
+                        </button>
+                      </div>
+                    ) : (
+                      <p className="note">
+                        <span className="note__text">{template.notes}</span>
+                        <FaPaperclip className="note__paper-clip-icon" />
+                        <button
+                          className="note__edit-icon"
+                          onClick={() => handleEditNotes(template)}
+                        >
+                          <FaPencilAlt />
+                        </button>
                       </p>
-                    </div>
-                    <ul className="templateCard__exerciseList">
+                    )}
+
+                    <h3 className="templateCard__name">
+                      {template.template_name}
+                    </h3>
+
+                    {/* <Link to={`/edit-template/${template.id}`}>
+                      <button>Edit Template</button>
+                    </Link> */}
+                    {/* <button
+                      className="templateCard__editButton"
+                      onClick={() => setEditingTemplate(template)}
+                    >
+                      <FaEdit />
+                    </button> */}
+                  </div>
+                  <ul className="templateCard__exerciseList">
+                    <Link
+                      to={`/start/${template.id}`}
+                      className="templateCard__link"
+                    >
                       {Array.isArray(template.exercises)
                         ? template.exercises.map((exerciseId, index) => {
                             const exercise = exerciseData[exerciseId]; // Find exercise by ID
@@ -97,13 +180,26 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
                             );
                           })
                         : "No exercises listed"}
-                    </ul>
-                  </div>
-                </Link>
+                    </Link>
+                  </ul>
+                  <button
+                    className="templateCard__deleteButton"
+                    onClick={() => handleDelete(template.id)}
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
               </li>
             ))}
         </ul>
       </div>
+      {/* {editingTemplate && (
+        <EditTemplate
+          template={editingTemplate}
+          setTemplates={setTemplates}
+          closeEdit={() => setEditingTemplate(null)} // Close the edit view
+        />
+      )} */}
     </section>
   );
 }
