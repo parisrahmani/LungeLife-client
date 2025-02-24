@@ -1,0 +1,42 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.start-workout {
+  //background-color: rgb(251, 248, 248);
+  background-color: #f9f9f9;
+  max-width: 1400px;
+  margin: 0 auto;
+  &__header {
+    display: flex;
+
+    justify-content: space-between;
+  }
+  &__title {
+    margin: 1rem;
+    text-align: start;
+  }
+
+  &__button-add {
+    @include btn-style;
+    @include primary-btn;
+    margin: 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      @include primary-hover;
+      //background-color: #4caf50;
+    }
+  }
+
+  &__button-cancel {
+    @include btn-style;
+    @include secondary-btn;
+    margin: 1rem;
+    color: $Deep_Orange;
+    &:hover {
+      background-color: $Deep_Orange;
+      color: $white;
+    }
+  }
+}

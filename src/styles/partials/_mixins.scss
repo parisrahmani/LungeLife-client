@@ -1,0 +1,83 @@
+@use "./variables" as *;
+@use "./typography" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin form-field {
+  overflow: auto;
+  resize: none;
+  padding: 0 1rem;
+  border-radius: 10px;
+  height: 2.375rem;
+  border: 1px solid $cloud;
+  //font-family: $body-font-stack;
+  color: $black;
+}
+
+@mixin select-field {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  cursor: pointer;
+  overflow: auto;
+  resize: none;
+  padding: 0 1rem;
+  border-radius: 20px;
+  height: 2.25rem;
+  border: 1px solid $cloud;
+  //font-family: $body-font-stack;
+  //color: $slate;
+}
+
+@mixin btn-style {
+  font-size: 0.875rem;
+  font-weight: 400;
+  border-radius: 8px;
+  border: none;
+  padding: 0.5rem;
+  width: 46%;
+  cursor: pointer;
+}
+
+@mixin primary-btn {
+  background-color: $Pastel_Orange;
+  color: $white;
+}
+
+@mixin primary-hover {
+  background-color: $Bright_Orange;
+  font-style: bold;
+  border: none;
+}
+
+@mixin secondary-btn {
+  background-color: $silver;
+  color: $black;
+}
+
+@mixin secondary-hover {
+  background-color: $Light_Orange;
+  color: $white;
+  font-size: large;
+}
+
+@mixin form-focus {
+  border: 1.5px solid $Dark_Orange;
+  outline: none;
+}
+
+@mixin note-font {
+  font-family: Handlee;
+  font-size: 10px;
+}

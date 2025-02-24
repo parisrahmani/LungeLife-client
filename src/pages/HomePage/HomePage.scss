@@ -1,0 +1,70 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.newSession {
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem;
+    align-items: center;
+    width: 50%;
+  }
+  &__input {
+    @include form-field;
+    width: 60%;
+  }
+  &__start-exercise-button {
+    @include btn-style;
+    background-color: $Bright_Orange;
+    color: $white;
+    font-size: 1.1rem;
+    width: 50%;
+    padding: 1rem;
+    margin: 2rem auto;
+    display: block;
+    &:hover {
+      background-color: $Dark_Orange;
+    }
+  }
+  &__button {
+    @include btn-style;
+    @include primary-btn;
+    padding: 0.5rem 0;
+    font-size: 12px;
+
+    &:hover {
+      @include primary-hover;
+      font-size: large;
+    }
+  }
+
+  &__list {
+    width: 100%;
+  }
+}
+
+.add-template {
+  margin: 2rem;
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+
+  &__button {
+    @include btn-style;
+    width: 200px;
+    height: 240px;
+    background-color: $Cream;
+    font-size: 16px;
+
+    &:hover {
+      background-color: $Light_Orange;
+    }
+  }
+}

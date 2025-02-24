@@ -1,0 +1,55 @@
+@use "./variables" as *;
+@font-face {
+  font-family: "Great Vibes";
+  src: url("https://fonts.gstatic.com/s/greatvibes/v9/RWmMoKWR9v4ksMfaWd_JN9XFiaQ4.woff2")
+      format("woff2"),
+    url("https://fonts.gstatic.com/s/greatvibes/v9/RWmMoKWR9v4ksMfaWd_JN9XFiaQ4.woff")
+      format("woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Pacifico";
+  src: url("https://fonts.gstatic.com/s/pacifico/v17/FwZY7-Qmy14u9lezJ-6H6Mk.woff2")
+      format("woff2"),
+    url("https://fonts.gstatic.com/s/pacifico/v17/FwZY7-Qmy14u9lezJ-6H6M.woff")
+      format("woff");
+  font-weight: 300;
+}
+// Outfit font family
+// Medium font
+@font-face {
+  font-family: "Outfit";
+  src: url("src/assets/Font/Outfit-Medium.woff2 ") format("woff2"),
+    url("src/assets/Font/Outfit-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+// Light font
+@font-face {
+  font-family: "Outfit";
+  src: url("src/assets/Font/Outfit-Light.woff2") format("woff2"),
+    url("src/assets/Font/Outfit-Light.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Handlee";
+  src: url("src/assets/Font/Handlee-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HanDancingScript-VariableFont_wghtdlee";
+  src: url("src/assets/Font/DancingScript-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoFlex-Regular";
+  src: url("src/assets/Font/RobotoFlex-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}

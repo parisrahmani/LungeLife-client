@@ -61,17 +61,17 @@ Local API
 
 ### Mockups
 
-![](./README_img/SignIn.png)
-![](./README_img/Profile.png)
-![](./README_img/HomePage.png)
-![](./README_img/Exercises.png)
-![](./README_img/Progress.png)
-![](./README_img/History.png)
-![](./README_img/AIChat.png)
+![](./Proposal_img/SignIn.png)
+![](./Proposal_img/Profile.png)
+![](./Proposal_img/HomePage.png)
+![](./Proposal_img/Exercises.png)
+![](./Proposal_img/Progress.png)
+![](./Proposal_img/History.png)
+![](./Proposal_img/AIChat.png)
 
 ### Data
 
-![](./README_img/DataChart.png)
+![](./Proposal_img/DataChart.png)
 
 ### Endpoints
 

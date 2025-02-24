@@ -1,0 +1,34 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.logo {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+  padding: 12px 12px;
+  border-radius: 12px;
+
+  &__icon {
+    max-width: 40px;
+    border-radius: 8px;
+    display: flex;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  h4 {
+    color: $Deep_Orange;
+    font-size: 8px;
+    margin: 2px 0 0;
+    text-align: center;
+    font-family: Pacifico, Great Vibes, cursive, sans-serif;
+  }
+}

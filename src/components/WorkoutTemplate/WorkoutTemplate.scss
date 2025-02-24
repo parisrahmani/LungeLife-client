@@ -1,0 +1,161 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.templateSection {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1rem 2rem;
+  position: relative &__title {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: start;
+  }
+
+  &__title {
+    margin: 1rem 0 2rem;
+  }
+}
+
+.templateCard {
+  &__section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    align-items: center;
+    display: inline-block;
+
+    width: 280px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    padding: 1rem 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__title {
+    margin: 1rem 0 0.5rem;
+    padding-top: 2rem;
+  }
+
+  &__name {
+    color: #333;
+  }
+
+  &__date {
+    color: #888;
+  }
+
+  &__exerciseList {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+
+  &__exerciseItem {
+    font-size: 0.75rem;
+    line-height: 1.625rem;
+    color: #555;
+    padding: 0.5rem 0;
+    position: relative;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+
+    &:hover .templateCard__exerciseImage {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__exerciseImage {
+    max-width: 100px;
+    opacity: 0;
+    visibility: hidden;
+    max-width: 100px;
+    position: absolute;
+    top: -100%;
+    left: 80%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease-in-out;
+  }
+  &__deleteButton {
+    background-color: $white;
+    border: none;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+}
+
+.note {
+  position: absolute;
+  right: 0px;
+  top: 8px;
+
+  &__paper-clip-icon {
+    position: absolute;
+    top: -8px;
+    right: 0px;
+  }
+
+  &__edit-icon {
+    position: absolute;
+    top: 4px;
+    left: -24px;
+    background-color: $white;
+    border: none;
+    padding: 0;
+  }
+
+  &__text {
+    background-color: #f7dabd;
+    border-radius: 4px;
+    width: auto;
+    font-size: 10px;
+    color: #444;
+    @include note-font;
+    transform: translate(20px, 10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    padding-right: 3rem;
+  }
+
+  &__new {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__new-text {
+    border: 1px solid #f7dabd;
+    background-color: $white;
+    padding: 0 0.5rem;
+  }
+
+  &__new-save {
+    background-color: $white;
+    border: none;
+  }
+}

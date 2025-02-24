@@ -1,0 +1,43 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin: 2rem 2rem 0;
+  background-color: $white;
+  border-radius: 10px;
+  width: 100px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  font-weight: bold;
+
+  &__button {
+    @include btn-style;
+    background-color: $Light_Orange;
+    display: flex;
+    padding: 4px 8px;
+    font-size: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5rem;
+    width: 28px;
+    transition: background-color 0.3s ease;
+    color: $white;
+  }
+  &__button-play {
+    &:hover {
+      background-color: #4caf50;
+    }
+  }
+
+  &__button-reset {
+    &:hover {
+      background-color: red;
+    }
+  }
+}

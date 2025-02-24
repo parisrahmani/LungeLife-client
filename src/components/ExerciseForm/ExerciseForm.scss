@@ -1,0 +1,169 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.form {
+  max-width: 800px;
+  margin: 1rem auto;
+
+  padding: 1rem;
+  background-color: $white; // Assuming $white is part of your theme
+  border-radius: 8px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  &__title {
+    text-align: center;
+  }
+
+  &__date {
+    width: 30%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid $cloud;
+    border-radius: 8px;
+    font-size: 1rem;
+
+    &:focus {
+      border-color: $Light_Orange;
+      outline: none;
+    }
+  }
+
+  &__submit {
+    @include btn-style;
+    @include primary-btn;
+    width: 30%;
+    margin-bottom: 1rem;
+  }
+
+  &__add {
+    @include btn-style;
+    @include secondary-btn;
+    max-width: 30%;
+    color: $Bright_Orange;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__success-message {
+    margin: 2rem 8rem 2rem;
+    font-size: 1.5rem;
+    color: #4caf50;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popUp 2s ease-out forwards;
+  }
+
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+
+  &__delete-icon {
+    background: $white;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__delete-message {
+    margin: 2rem 8rem 2rem;
+    font-size: 1.5rem;
+    color: $orangered;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popUp 2s ease-out forwards;
+  }
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background-color: $silver;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  th {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: $white;
+    }
+
+    tr:hover {
+      background-color: $Light_Orange;
+    }
+  }
+
+  input,
+  select {
+    @include form-field;
+    width: 80%;
+    font-size: 1rem;
+    &:focus {
+      @include form-focus;
+    }
+  }
+
+  select {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,56 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
+.exercise-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: $silver;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  color: $dark-blue;
+  text-align: center;
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: $orange;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__info {
+    width: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.82);
+    padding: 1rem;
+    border-radius: 8px;
+
+    p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    strong {
+      color: $orange;
+      font-weight: bold;
+    }
+  }
+}
