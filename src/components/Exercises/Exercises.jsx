@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import Select from "react-select";
 
 import "./Exercises.scss";
@@ -7,6 +7,7 @@ import "./Exercises.scss";
 import searchIcon from "../../assets/Icons/search-24px.svg";
 import ExerciseDetails from "../../components/ExerciseDetails/ExerciseDetails";
 import ExerciseProgress from "../ExerciseProgress/ExerciseProgress";
+import ExerciseHistory from "../ExerciseHistory/ExerciseHistory";
 
 const Exercises = ({ id }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -187,7 +188,7 @@ const Exercises = ({ id }) => {
                       onClick={() => setView("progress")}
                       className="exercise__buttons-each"
                     >
-                      Progress
+                      History
                     </button>
                   </div>
                 )}
@@ -197,7 +198,10 @@ const Exercises = ({ id }) => {
                     <ExerciseDetails exercise={exercise} />
                   )}
                   {selectedExercise === exercise.id && view === "progress" && (
-                    <ExerciseProgress exercise_id={exercise.id} />
+                    <div>
+                      <ExerciseHistory exercise_id={exercise.id} />
+                      <ExerciseProgress exercise_id={exercise.id} />
+                    </div>
                   )}
                 </div>
               </div>
