@@ -7,10 +7,7 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  //width: 500px;
   margin: 1rem 2rem;
-  //max-width: 1000px;
-  //margin: 2rem auto;
   position: relative &__title {
     margin-bottom: 1rem;
     color: #333;
@@ -47,7 +44,6 @@
   }
 
   &__item {
-    //border-bottom: 1px solid #eee;
     padding: 1rem 0;
 
     &:last-child {
@@ -56,9 +52,6 @@
   }
 
   &__title {
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: first baseline;
     margin: 1rem 0 0.5rem;
     padding-top: 2rem;
   }
@@ -78,11 +71,6 @@
     padding: 0;
     margin: 0;
     position: relative;
-
-    // @include tablet {
-    //   display: flex;
-    //   flex-direction: row;
-    // }
   }
 
   &__exerciseItem {
@@ -103,23 +91,15 @@
   }
 
   &__exerciseImage {
-    //display: none;
     max-width: 100px;
     opacity: 0;
     visibility: hidden;
     max-width: 100px;
     position: absolute;
-    top: -100%; // Position below the item
+    top: -100%;
     left: 80%;
     transform: translateX(-50%);
     transition: opacity 0.3s ease-in-out;
-    // &:hover {
-    //   display: flex;
-    // }
-
-    // @include tablet {
-    //   display: flex;
-    // }
   }
   &__deleteButton {
     background-color: $white;
@@ -139,11 +119,6 @@
     position: absolute;
     top: -8px;
     right: 0px;
-
-    // @include tablet {
-    //   top: -40px;
-    //   right: -16px;
-    // }
   }
 
   &__edit-icon {
@@ -156,37 +131,29 @@
   }
 
   &__text {
-    background-color: #f7dabd; // Light paper-like color
+    background-color: #f7dabd;
     border-radius: 4px;
-    //height: 28px;
     width: auto;
     font-size: 10px;
     color: #444;
     @include note-font;
-
-    transform: translate(
-      20px,
-      10px
-    ); // Optional for more space from top and right edges
+    transform: translate(20px, 10px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
     padding: 1rem;
     padding-right: 3rem;
-
-    // @include tablet {
-    //   top: -40px;
-    //   right: 4px;
-    // }
   }
+
   &__new {
     display: flex;
     gap: 1rem;
   }
+
   &__new-text {
     border: 1px solid #f7dabd;
     background-color: $white;
     padding: 0 0.5rem;
   }
+
   &__new-save {
     background-color: $white;
     border: none;

@@ -8,7 +8,6 @@
   flex-direction: column;
   max-width: 1200px;
 
-  //align-items: center;
   margin: 0 auto;
   background-color: #f9f9f9;
 
@@ -17,20 +16,20 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: 0;
-    width: 55%;
+    margin-left: 0.5rem;
+    width: 50%;
   }
 
   &__search-input {
     @include form-field;
     padding-left: 20px;
     width: 100%;
-    margin: 1rem 2rem;
+    margin: 1rem 2.5rem;
   }
 
   &__search-icon {
     position: absolute;
-    left: 2rem;
+    left: 2.5rem;
     top: 50%;
     transform: translateY(-50%);
     color: $dark-blue;
@@ -43,9 +42,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 1rem;
-    gap: 1rem;
-    width: 50%;
+    margin-left: 2rem;
+    width: 46%;
   }
 
   &__filter-item {
@@ -87,6 +85,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
+    margin-left: 1rem;
   }
 
   &__item {
@@ -96,7 +95,7 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
-    width: 50%;
+    width: 45%;
     background-color: $white;
 
     &:hover {
@@ -149,8 +148,5 @@
     &:hover {
       @include primary-hover;
     }
-  }
-  &__filter-exercise {
-    //width: 40%;
   }
 }

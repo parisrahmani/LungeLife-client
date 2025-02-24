@@ -19,16 +19,6 @@ function ExerciseDetails({ exercise }) {
         <p>
           <strong>Equipment:</strong> {exercise.equipment}
         </p>
-
-        {/* <p>
-          <strong>Force:</strong> {exercise.force}
-        </p>
-        <p>
-          <strong>Level:</strong> {exercise.level}
-        </p>
-        <p>
-          <strong>Category:</strong> {exercise.category}
-        </p> */}
         <p>
           <strong>Primary Muscles:</strong> {exercise.primary_muscles}
         </p>

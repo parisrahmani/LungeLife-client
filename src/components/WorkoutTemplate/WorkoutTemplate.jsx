@@ -104,12 +104,6 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
               <li key={template.id} className="templateCard__item">
                 <div className="templateCard__section">
                   <div className="templateCard__title">
-                    {/* <p className="templateCard__note">
-                      <div className="templateCard__note-text">
-                        {template.notes}
-                      </div>
-                      <FaPaperclip className="templateCard__note-icon" />
-                    </p> */}
                     {editingNotes === template.id ? (
                       <div className="note__new">
                         <textarea
@@ -140,16 +134,6 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
                     <h3 className="templateCard__name">
                       {template.template_name}
                     </h3>
-
-                    {/* <Link to={`/edit-template/${template.id}`}>
-                      <button>Edit Template</button>
-                    </Link> */}
-                    {/* <button
-                      className="templateCard__editButton"
-                      onClick={() => setEditingTemplate(template)}
-                    >
-                      <FaEdit />
-                    </button> */}
                   </div>
                   <ul className="templateCard__exerciseList">
                     <Link
@@ -158,7 +142,7 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
                     >
                       {Array.isArray(template.exercises)
                         ? template.exercises.map((exerciseId, index) => {
-                            const exercise = exerciseData[exerciseId]; // Find exercise by ID
+                            const exercise = exerciseData[exerciseId];
                             return (
                               <li
                                 key={index}
@@ -193,13 +177,6 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
             ))}
         </ul>
       </div>
-      {/* {editingTemplate && (
-        <EditTemplate
-          template={editingTemplate}
-          setTemplates={setTemplates}
-          closeEdit={() => setEditingTemplate(null)} // Close the edit view
-        />
-      )} */}
     </section>
   );
 }

@@ -14,9 +14,7 @@ const Exercises = ({ id }) => {
   const [level, setLevel] = useState("");
   const [category, setCategory] = useState("");
   const [exercises, setExercises] = useState([]);
-  // const [exerciseInfo, setExerciseInfo] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState(null);
-  //const [showProgress, setShowProgress] = useState(false);
   const [view, setView] = useState(null);
 
   const leg = ["quadriceps", "hamstrings", "calves", "adductors"];
@@ -104,12 +102,11 @@ const Exercises = ({ id }) => {
 
   const handleExerciseClick = (exerciseId) => {
     if (selectedExercise === exerciseId) {
-      // If clicking the same exercise again, close everything
       setSelectedExercise(null);
       setView(null);
     } else {
       setSelectedExercise(exerciseId);
-      setView(null); // Reset view when selecting a new exercise
+      setView(null);
     }
   };
 
@@ -178,7 +175,6 @@ const Exercises = ({ id }) => {
                 </div>
               </li>
               <div className="exercise__details-section">
-                {/* Show buttons when an exercise is selected */}
                 {selectedExercise === exercise.id && (
                   <div className="exercise__buttons">
                     <button
@@ -197,17 +193,12 @@ const Exercises = ({ id }) => {
                 )}
 
                 <div className="exercise__options">
-                  {/* Show the correct component based on button click */}
                   {selectedExercise === exercise.id && view === "info" && (
                     <ExerciseDetails exercise={exercise} />
                   )}
-                  {
-                    selectedExercise === exercise.id && view === "progress" && (
-                      <ExerciseProgress exercise_id={exercise.id} />
-                    )
-
-                    // <Progress exercise={exercise} />
-                  }
+                  {selectedExercise === exercise.id && view === "progress" && (
+                    <ExerciseProgress exercise_id={exercise.id} />
+                  )}
                 </div>
               </div>
             </div>

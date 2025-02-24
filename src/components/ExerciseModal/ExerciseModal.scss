@@ -2,18 +2,19 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/global" as *;
 
-.exercise__item {
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+.exercise {
+  &__item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
 
-.exercise__item.selected {
-  background-color: #e0e0e0; /* Change to the color of your choice */
-}
-
-.exercise__item:hover {
-  background-color: #f0f0f0; /* Optional hover effect */
+  &item.selected {
+    background-color: #e0e0e0;
+  }
 }
 
 .modal {

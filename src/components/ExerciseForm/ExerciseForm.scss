@@ -1,113 +1,3 @@
-// @use "../../styles/partials/mixins" as *;
-// @use "../../styles/partials/variables" as *;
-// @use "../../styles/partials/global" as *;
-
-// .form {
-
-//   //max-width: 400px;
-//   margin: 0 auto;
-//   padding: 1rem;
-//   background-color: #fff;
-//   border-radius: 8px;
-//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-// }
-
-// .form__header {
-//   margin-bottom: 1rem;
-//   text-align: center;
-//   h3 {
-//     font-size: 1.5rem;
-//     color: $black;
-//   }
-// }
-
-// .start-workout__date-input {
-//   display: block;
-//   width: 100%;
-//   padding: 0.5rem;
-//   margin-bottom: 1rem;
-//   border: 1px solid $cloud;
-//   border-radius: 8px;
-//   font-size: 1rem;
-//   color: $dark-blue;
-//   background-color: #f9f9f9;
-
-//   &:focus {
-//     border-color: $cloud;
-//     outline: none;
-//   }
-// }
-
-// button {
-//   display: block;
-//   width: 100%;
-//   padding: 0.75rem;
-//   background-color: $cloud;
-//   color: #fff;
-//   border: none;
-//   border-radius: 8px;
-//   font-size: 1rem;
-//   cursor: pointer;
-//   margin-bottom: 1rem;
-
-//   // &:hover {
-//   //   background-color: darken($cloud, 10%);
-//   // }
-// }
-
-// .form-table {
-//   width: 100%;
-//   border-collapse: collapse;
-//   margin-top: 1rem;
-//   font-size: 1rem;
-//   text-align: left;
-
-//   thead {
-//     background-color: #f4f4f4;
-//   }
-
-//   th,
-//   td {
-//     padding: 0.75rem;
-//     //border: 1px solid #ddd;
-//     text-align: center;
-//   }
-
-//   th {
-//     font-weight: bold;
-//     text-transform: uppercase;
-//   }
-
-//   tbody {
-//     tr:nth-child(even) {
-//       background-color: #f9f9f9;
-//     }
-
-//     tr:hover {
-//       background-color: #eef;
-//     }
-//   }
-
-//   input,
-//   select {
-//     width: 80%;
-//     padding: 0.5rem;
-//     border: 1px solid #ccc;
-//     border-radius: 4px;
-//     font-size: 1rem;
-//     text-align: center;
-
-//     &:focus {
-//       border-color: #007bff;
-//       outline: none;
-//     }
-//   }
-
-//   select {
-//     cursor: pointer;
-//   }
-// }
-
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/global" as *;
@@ -133,20 +23,16 @@
     width: 100%;
   }
   &__title {
-    //margin-bottom: 2rem 0;
     text-align: center;
   }
 
   &__date {
-    //display: flex;
     width: 30%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid $cloud;
     border-radius: 8px;
     font-size: 1rem;
-    //color: $dark-blue;
-    //background-color: #f9f9f9;
 
     &:focus {
       border-color: $Light_Orange;
@@ -158,9 +44,6 @@
     @include btn-style;
     @include primary-btn;
     width: 30%;
-    // width: 100%;
-    //padding: 0.75rem;
-    //background-color: $cloud; // This button uses $cloud as background
     margin-bottom: 1rem;
   }
 
@@ -171,60 +54,27 @@
     color: $Bright_Orange;
     display: flex;
     justify-content: center;
-    //align-items: center;
-    // width: 100%;
-    //padding: 0.75rem;
-    //background-color: $cloud; // This button uses $cloud as background
-
-    //border: none;
-    //border-radius: 8px;
-    //font-size: 1rem;
-    //cursor: pointer;
-    //margin-bottom: 1rem;
   }
-
-  // button {
-  //   display: block;
-  //   width: 100%;
-  //   padding: 0.75rem;
-  //   background-color: $cloud; // This button uses $cloud as background
-  //   color: #fff;
-  //   border: none;
-  //   border-radius: 8px;
-  //   font-size: 1rem;
-  //   cursor: pointer;
-  //   margin-bottom: 1rem;
-
-  //   &:hover {
-  //     background-color: $graphite;
-  //   }
-  // }
 }
 
 .form-table {
   width: 100%;
   border-collapse: collapse;
-  //margin-top: 1rem;
-  //font-size: 1rem;
-  //text-align: left;
 
   thead {
     background-color: $silver;
-    //border-radius: 4px;
   }
 
   th,
   td {
     padding: 0.75rem;
     text-align: center;
-    //border-radius: 4px;
   }
 
   th {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.9rem;
-    //color: $dark-blue; // To make headers stand out
   }
 
   tbody {
@@ -233,7 +83,7 @@
     }
 
     tr:hover {
-      background-color: $Light_Orange; // Assuming $hover-gray is defined for a subtle hover effect
+      background-color: $Light_Orange;
     }
   }
 
@@ -241,13 +91,7 @@
   select {
     @include form-field;
     width: 80%;
-    // width: 80%;
-    // padding: 0.5rem;
-    // border: 1px solid $cloud;
-    // border-radius: 4px;
     font-size: 1rem;
-    // text-align: center;
-
     &:focus {
       @include form-focus;
     }

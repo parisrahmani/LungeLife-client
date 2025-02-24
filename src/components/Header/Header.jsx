@@ -16,17 +16,10 @@ function Header() {
         <Link to="/exercises" className="header__link">
           Exercises
         </Link>
-        {/* <a href="/progress" className="header__link">
-          📊 
-          Progress
-        </a>
-        <a href="/history" className="header__link">
-          History
-        </a> */}
 
-        <Link to="/ai-chat" className="header__link">
+        {/* <Link to="/ai-chat" className="header__link">
           💬
-        </Link>
+        </Link> */}
         <Link to="/sign-in" className="header__link">
           👤
         </Link>

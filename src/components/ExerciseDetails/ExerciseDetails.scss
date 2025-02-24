@@ -7,11 +7,10 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: $silver; // Silver cloud color
-  // border-radius: 12px;
+  background-color: $silver;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 800px;
-  color: $dark-blue; // Dark blue as primary text color
+  color: $dark-blue;
   text-align: center;
 
   &__title {
@@ -19,7 +18,7 @@
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    color: $orange; // Touch of orange for the title
+    color: $orange;
   }
 
   &__image {
@@ -50,7 +49,7 @@
     }
 
     strong {
-      color: $orange; // Touch of orange for emphasis
+      color: $orange;
       font-weight: bold;
     }
   }

@@ -147,14 +147,6 @@ function ExerciseModal({
   };
 
   return (
-    // <ReactModal
-    //   onAdd={onAdd}
-    //   onClose={onClose}
-    //   contentLabel="Custom Popup"
-    //   className="modal"
-    //   shouldCloseOnOverlayClick={false}
-    //   overlayClassName="Overlay"
-    // >
     <div className="modal">
       <div className="modal__content">
         <h2 className="modal__title">Select Exercises</h2>
@@ -170,7 +162,6 @@ function ExerciseModal({
           </button>
         </div>
 
-        {/* Search and Filter */}
         <div className="exercise__search">
           <input
             type="text"
@@ -213,7 +204,6 @@ function ExerciseModal({
           />
         </div>
 
-        {/* Exercise List */}
         <ul className="exercise__list">
           {filteredExercises.map((exercise) => (
             <li
@@ -238,7 +228,6 @@ function ExerciseModal({
         </ul>
       </div>
     </div>
-    //</ReactModal>
   );
 }
 

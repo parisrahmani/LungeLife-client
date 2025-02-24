@@ -9,7 +9,7 @@
   align-items: center;
   padding: 12px;
   margin: 2rem 2rem 0;
-  background-color: #f4f4f4;
+  background-color: $white;
   border-radius: 10px;
   width: 100px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -27,6 +27,7 @@
     margin: 0.5rem;
     width: 28px;
     transition: background-color 0.3s ease;
+    color: $white;
   }
   &__button-play {
     &:hover {

@@ -1,16 +1,10 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import ExerciseModal from "../../components/ExerciseModal/ExerciseModal";
-
-// import { useNavigate } from "react-router-dom";
-// import WorkoutTemplate from "../WorkoutTemplate/WorkoutTemplate.jsx";
 
 function NewTemplate({ setTemplates, setReloadTemplates }) {
   const today = new Date().toLocaleDateString("en-CA");
   console.log(today);
-
-  //const [reloadTemplates, setReloadTemplates] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedExercises, setSelectedExercises] = useState([]);
@@ -35,7 +29,7 @@ function NewTemplate({ setTemplates, setReloadTemplates }) {
     console.log(exercises);
     setNewTemplate({
       ...newTemplate,
-      exercises: exercises.map((e) => e.name), // Join exercise names
+      exercises: exercises.map((e) => e.name),
     });
     setIsModalOpen(false);
   };
@@ -84,9 +78,6 @@ function NewTemplate({ setTemplates, setReloadTemplates }) {
         notes: "",
       });
       setSelectedExercises([]);
-      //WorkoutTemplate();
-
-      //setTemplates((prev) => !prev);
     } catch (error) {
       console.error("Error adding template:", error);
     }
