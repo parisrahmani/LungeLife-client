@@ -100,6 +100,10 @@
 
     &:hover {
       transform: translateY(-4px);
+      background-color: #e0e0e0;
+    }
+    &.selected {
+      background-color: #e0e0e0;
     }
   }
 

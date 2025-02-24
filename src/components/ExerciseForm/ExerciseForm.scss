@@ -14,6 +14,7 @@
 
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   &__header {
     display: flex;
@@ -54,6 +55,71 @@
     color: $Bright_Orange;
     display: flex;
     justify-content: center;
+  }
+
+  &__success-message {
+    margin: 2rem 8rem 2rem;
+    font-size: 1.5rem;
+    color: #4caf50;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popUp 2s ease-out forwards;
+  }
+
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+
+  &__delete-icon {
+    background: $white;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__delete-message {
+    margin: 2rem 8rem 2rem;
+    font-size: 1.5rem;
+    color: $orangered;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popUp 2s ease-out forwards;
+  }
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
   }
 }
 

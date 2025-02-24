@@ -7,13 +7,14 @@
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    &:hover {
-      background-color: #f0f0f0;
-    }
   }
 
-  &item.selected {
-    background-color: #e0e0e0;
+  &.selected {
+    background-color: #f0f0f0;
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
   }
 }
 
