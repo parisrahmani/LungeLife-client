@@ -69,7 +69,7 @@ function StartWorkoutPage() {
         <button onClick={handleOpenModal} className="start-workout__button-add">
           Add Exercises
         </button>
-        <Link to="/">
+        <Link to="/home">
           <button className="start-workout__button-cancel">
             Cancel Workout
           </button>

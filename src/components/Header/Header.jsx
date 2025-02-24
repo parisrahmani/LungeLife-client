@@ -10,17 +10,13 @@ function Header() {
         <LungeLifeLogo />
       </div>
       <nav className="header__nav">
-        <Link to="/" className="header__link">
+        <Link to="/home" className="header__link">
           Start Workout
         </Link>
         <Link to="/exercises" className="header__link">
           Exercises
         </Link>
-
-        {/* <Link to="/ai-chat" className="header__link">
-          💬
-        </Link> */}
-        <Link to="/sign-in" className="header__link">
+        <Link to="/" className="header__link">
           👤
         </Link>
       </nav>

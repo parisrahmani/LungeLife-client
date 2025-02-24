@@ -4,7 +4,6 @@ import axios from "axios";
 import { FaPaperclip, FaTrash, FaSave, FaPencilAlt } from "react-icons/fa";
 
 import "./WorkoutTemplate.scss";
-import EditTemplate from "../EditTemplate/EditTemplate";
 
 function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
   const [exerciseData, setExerciseData] = useState({});

@@ -39,7 +39,7 @@ const SignInSignUp = () => {
               />
             </div>
           )}
-          <Link to="/">
+          <Link to="/home">
             <button type="submit" className="auth__button">
               {isSignUp ? "Sign Up" : "Sign In"}
             </button>
