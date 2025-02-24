@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import axios from "axios";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 import "./ExerciseForm.scss";
 
 function ExerciseForm({ exercise }) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
@@ -91,15 +93,37 @@ function ExerciseForm({ exercise }) {
 
       const result = await response.json();
       console.log("Success:", result);
+      setIsSubmitted(true);
     } catch (error) {
       console.error("Error:", error);
     }
   };
-  return (
+
+  const handleDelete = () => {
+    setIsDeleted(true);
+    setIsSubmitted(false); // Reset the success message when deleting
+    setExerciseData({
+      user_id: "user-01",
+      exercise_id: "",
+      date: new Date().toISOString().split("T")[0],
+      exerciseRecords: [
+        { weight: "", reps: 1, sets: 1, duration: "", prs: "" },
+      ],
+    });
+  };
+
+  return isDeleted ? (
+    <div className="form__delete-message">Form deleted</div>
+  ) : isSubmitted ? (
+    <div>
+      <h2 className="form__success-message">Great job!</h2>
+    </div>
+  ) : (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__title">
         <h2>{exerciseData.name || "Log Exercise Record"}</h2>
       </div>
+
       <div className="form__header">
         <input
           type="date"
@@ -173,6 +197,9 @@ function ExerciseForm({ exercise }) {
 
       <button type="button" onClick={handleAddSet} className="form__add">
         Add Set
+      </button>
+      <button onClick={handleDelete} className="form__delete-icon">
+        <FaRegTrashAlt />
       </button>
     </form>
   );
