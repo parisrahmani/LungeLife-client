@@ -1,49 +1,7 @@
-// import React, { useState } from "react";
-// import Exercises from "../../components/Exercises/Exercises";
-// import "./ExerciseModal.scss";
-
-// const ExerciseModal = ({
-//   selectedExercises,
-//   setSelectedExercises,
-//   onAdd,
-//   onClose,
-// }) => {
-//   const handleSelectExercise = (exercise) => {
-//     setSelectedExercises(
-//       (prev) =>
-//         prev.some((e) => e.id === exercise.id)
-//           ? prev.filter((e) => e.id !== exercise.id) // Remove if already selected
-//           : [...prev, exercise] // Add if not selected
-//     );
-//   };
-
-//   return (
-//     <div className="modal">
-//       <div className="modal__content">
-//         <h2>Select Exercises</h2>
-//         <div className="modal__buttons">
-//           <button onClick={onClose}>Close</button>
-//           <button onClick={() => onAdd(selectedExercises)}>Add</button>
-//         </div>
-
-//         <Exercises
-//           onSelect={handleSelectExercise}
-//           selectedExercises={selectedExercises}
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ExerciseModal;
-//import ReactModal from "react-modal";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Select from "react-select";
 import "./ExerciseModal.scss";
 import searchIcon from "../../assets/Icons/search-24px.svg";
-
-//ReactModal.setAppElement("#root");
 
 function ExerciseModal({
   selectedExercises,
