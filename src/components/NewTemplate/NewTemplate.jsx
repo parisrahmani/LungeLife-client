@@ -4,7 +4,6 @@ import ExerciseModal from "../../components/ExerciseModal/ExerciseModal";
 
 function NewTemplate({ setTemplates, setReloadTemplates }) {
   const today = new Date().toLocaleDateString("en-CA");
-  console.log(today);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedExercises, setSelectedExercises] = useState([]);
@@ -26,7 +25,7 @@ function NewTemplate({ setTemplates, setReloadTemplates }) {
 
   const handleAddExercises = (exercises) => {
     setSelectedExercises(exercises);
-    console.log(exercises);
+
     setNewTemplate({
       ...newTemplate,
       exercises: exercises.map((e) => e.name),
@@ -54,17 +53,15 @@ function NewTemplate({ setTemplates, setReloadTemplates }) {
       }
 
       const data = await res.json();
-      console.log("Server response:", data);
 
       try {
         const response = await fetch("http://localhost:8080/api/templates");
         const data = await response.json();
-        console.log("Fetched data:", data);
+
         const sortedData = data.sort(
           (a, b) => new Date(b.date) - new Date(a.date)
         );
 
-        console.log(sortedData);
         setTemplates(sortedData);
       } catch (err) {
         console.error("Error fetching templates:", err);

@@ -22,7 +22,7 @@ function StartWorkoutPage() {
         const response = await axios.get(
           `http://localhost:8080/api/templates/${id}`
         );
-        console.log(response.data);
+
         setAddedExercises(response.data);
       } catch (err) {
         console.error("Error fetching template:", err);

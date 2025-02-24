@@ -16,7 +16,7 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
       try {
         const response = await fetch("http://localhost:8080/api/templates");
         const data = await response.json();
-        console.log("Fetched data:", data);
+
         const sortedData = data.sort(
           (a, b) => new Date(b.date) - new Date(a.date)
         );
@@ -59,7 +59,6 @@ function WorkoutTemplate({ templates, reloadTempaltes, setTemplates }) {
       setTemplates((prevTemplates) =>
         prevTemplates.filter((template) => template.id !== id)
       );
-      console.log("Template deleted successfully");
     } catch (error) {
       console.error("Error deleting template:", error);
     }

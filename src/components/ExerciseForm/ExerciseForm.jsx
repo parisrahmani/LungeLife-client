@@ -60,10 +60,6 @@ function ExerciseForm({ exercise }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(exercise);
-    console.log(exerciseData);
-    console.log(exerciseData.exerciseRecords);
-
     const formData = {
       user_id: "user-01",
       exercise_id: exercise.id,
@@ -77,7 +73,6 @@ function ExerciseForm({ exercise }) {
         })
       ),
     };
-    console.log(formData);
     try {
       const response = await fetch("http://localhost:8080/api/progress", {
         method: "POST",
@@ -92,7 +87,6 @@ function ExerciseForm({ exercise }) {
       }
 
       const result = await response.json();
-      console.log("Success:", result);
       setIsSubmitted(true);
     } catch (error) {
       console.error("Error:", error);
