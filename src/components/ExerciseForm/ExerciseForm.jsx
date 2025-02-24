@@ -97,17 +97,20 @@ function ExerciseForm({ exercise }) {
   };
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <div className="form__header">
-        <h3>{exerciseData.name || "Add Exercise"}</h3>
+      <div className="form__title">
+        <h2>{exerciseData.name || "Log Exercise Record"}</h2>
       </div>
-
-      <input
-        type="date"
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
-        className="start-workout__date-input"
-      />
-      <button type="submit">Submit</button>
+      <div className="form__header">
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+          className="form__date"
+        />
+        <button type="submit" className="form__submit">
+          Submit
+        </button>
+      </div>
 
       <table className="form-table">
         <thead>
@@ -216,11 +219,7 @@ function ExerciseForm({ exercise }) {
         ))}
       </div> */}
 
-      <button
-        type="button"
-        onClick={handleAddSet}
-        className="form-table__button-set"
-      >
+      <button type="button" onClick={handleAddSet} className="form__add">
         Add Set
       </button>
     </form>
